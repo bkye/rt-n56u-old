@@ -1,18 +1,7 @@
 /*
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
- * the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston,
- * MA 02111-1307 USA
+ * 这里是默认通知表
+ * 在httpd/variables.c中，会有引用建立通知表
+ * szqoyy2017.04.25 添加迅雷通知
  */
 
 #ifndef NOTIFY_RC_H
@@ -60,6 +49,11 @@
 #define RCN_RESTART_ITUNES		"restart_itunes"
 #define RCN_RESTART_TRMD		"restart_trmd"
 #define RCN_RESTART_ARIA		"restart_aria"
+#define RCN_RESTART_XUNLEI		"restart_xunlei" //迅雷
+#define RCN_RESTART_ADBYBY		"restart_adbyby" //adbyby
+#define RCN_RESTART_KOOLPROXY		"restart_koolproxy" //kp
+#define RCN_RESTART_KMS		    "restart_kms" //kms
+#define RCN_RESTART_DNSQ	    "restart_dnsq" //dns
 #define RCN_RESTART_REBOOT		"restart_reboot"
 
 ////////////////////////////////////////////////////////////

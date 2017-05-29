@@ -1,18 +1,5 @@
 /*
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
- * the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston,
- * MA 02111-1307 USA
+ * 支持USB后启动的服务
  */
 
 #include <stdio.h>
@@ -1139,7 +1126,37 @@ void restart_aria(void)
 		restart_firewall();
 }
 #endif
+/*迅雷、ADBYBY、kms*/
+void restart_xunlei(void)
+{
+	if (count_stor_mountpoint())
+		eval("/usr/bin/xunlei.sh");
+}
 
+void restart_adbyby(void)
+{
+	if (count_stor_mountpoint())
+		eval("/usr/bin/adbyby.sh");
+}
+
+void restart_koolproxy(void)
+{
+	if (count_stor_mountpoint())
+		eval("/usr/bin/koolproxy.sh");
+}
+
+void restart_kms(void)
+{
+	if (count_stor_mountpoint())
+		eval("/usr/bin/kms.sh");
+}
+
+void restart_dnsq(void)
+{
+	if (count_stor_mountpoint())
+		eval("/usr/bin/dnsq.sh");
+}
+/*迅雷、ADBYBY、kms*/
 static void
 restore_home_dir(void)
 {

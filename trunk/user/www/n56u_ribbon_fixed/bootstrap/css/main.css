@@ -1,5 +1,5 @@
 body{
-    background: url("../img/dark-bg.jpg") repeat scroll center top transparent;
+    background: #353B47;
     overflow-y: scroll;
 }
 body.body_iframe{
@@ -15,10 +15,10 @@ body.body_iframe{
 }
 
 #logo {
-    background-image: url("/bootstrap/img/asus_logo.png");
-    width: 150px;
-    height: 71px;
-    margin-top: 40px;
+    background-image: url("/bootstrap/img/newifi_logo.png");
+    width: 57px;
+    height: 54px;
+    margin-top: 55px;
 }
 #logo:hover {
     cursor: pointer;

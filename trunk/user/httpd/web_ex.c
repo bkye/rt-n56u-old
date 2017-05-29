@@ -342,8 +342,6 @@ write_textarea_to_file(const char* value, const char* dir_name, const char* file
 		if (write_file_dos2unix(value, real_path) == 0) {
 			if (file_type == 3) {
 				chmod(real_path, 0600);
-				doSystem ("[ -f /home/admin/.ssh ] && rm /home/admin/.ssh");
-				doSystem ("[ -d /home/admin/.ssh ] || mkdir -p -m 700 /home/admin/.ssh");
 				doSystem("cp -f %s %s", real_path, "/home/admin/.ssh");
 			}
 			else if (file_type == 2)
@@ -2022,6 +2020,11 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 #else
 	int found_app_aria = 0;
 #endif
+	int found_app_xunlei = 1;  //Ô¶³ÌÑ¸À×
+	int found_app_adbyby = 1;  //adbyby
+	int found_app_koolproxy=1;//kp
+	int found_app_kms=1;   //KMS
+	int found_app_dnsq=1;   //dns
 #if defined(APP_NFSD)
 	int found_app_nfsd = 1;
 #else
@@ -2180,6 +2183,11 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 		"function found_app_ffly() { return %d;}\n"
 		"function found_app_torr() { return %d;}\n"
 		"function found_app_aria() { return %d;}\n"
+		"function found_app_xunlei() { return %d;}\n"  //Ô¶³ÌÑ¸À×
+		"function found_app_adbyby() { return %d;}\n"  //adbyby
+		"function found_app_koolproxy() { return %d;}\n"  //kp
+		"function found_app_kms() { return %d;}\n"     //kms
+		"function found_app_dnsq() { return %d;}\n"     //dns
 		"function found_app_nfsd() { return %d;}\n"
 		"function found_app_smbd() { return %d;}\n"
 		"function found_app_nmbd() { return %d;}\n"
@@ -2195,6 +2203,11 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 		found_app_ffly,
 		found_app_trmd,
 		found_app_aria,
+		found_app_xunlei,  //Ô¶³ÌÑ¸À×
+		found_app_adbyby,  //adbyby
+		found_app_koolproxy, //kp
+		found_app_kms,     //kms
+		found_app_dnsq,     //DNS
 		found_app_nfsd,
 		found_app_smbd,
 		found_app_nmbd,

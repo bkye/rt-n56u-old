@@ -1,18 +1,5 @@
 /*
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
- * the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston,
- * MA 02111-1307 USA
+ * 参数表
  */
 
 #include <stdio.h>
@@ -247,6 +234,18 @@
 			{"aria_pport", "", NULL, EVM_RESTART_ARIA},
 			{"aria_rport", "", NULL, EVM_RESTART_ARIA},
 #endif
+			{"xunlei_enable", "", NULL, EVM_RESTART_XUNLEI}, //迅雷远程
+			{"xunlei_dir", "", NULL, EVM_RESTART_XUNLEI},
+			{"adbyby_enable", "", NULL, EVM_RESTART_ADBYBY},//adbyby
+			{"adbyby_dir", "", NULL, EVM_RESTART_ADBYBY},
+			{"adbyby_cpu", "", NULL, EVM_RESTART_ADBYBY},
+			{"kms_enable", "", NULL, EVM_RESTART_KMS},//KMS
+			{"koolproxy_enable", "", NULL, EVM_RESTART_KOOLPROXY},//Koolproxy
+			{"koolproxy_https", "", NULL, EVM_RESTART_KOOLPROXY},//Koolproxy
+			{"dnsq_enable", "", NULL, EVM_RESTART_DNSQ},//DNS
+			{"dnsq_update_enable", "", NULL, EVM_RESTART_DNSQ},
+			{"dnsq_hours", "", NULL, EVM_RESTART_DNSQ},
+			{"dnsq_min", "", NULL, EVM_RESTART_DNSQ},
 #if (BOARD_NUM_UPHY_USB3 > 0)
 			{"usb3_disable", "", NULL, EVM_RESTART_REBOOT},
 #endif
@@ -379,6 +378,7 @@
 			{"wan_ppp_peer", "", NULL, EVM_RESTART_WAN},
 			{"wan_ppp_auth", "", NULL, EVM_RESTART_WAN},
 			{"wan_ppp_mppe", "", NULL, EVM_RESTART_WAN},
+			{"wan_ppp_lcp", "", NULL, EVM_RESTART_WAN},
 			{"wan_ppp_alcp", "", NULL, EVM_RESTART_WAN},
 			{"wan_ppp_pppd", "", NULL, EVM_RESTART_WAN},
 			{0,0,0,0}
@@ -923,6 +923,12 @@
 #if defined(APP_ARIA)
 		{EVM_RESTART_ARIA,		EVT_RESTART_ARIA,		RCN_RESTART_ARIA,	EVM_RESTART_FIREWALL},
 #endif
+		/*迅雷和ADBYBY/KMS支持*/
+		{EVM_RESTART_XUNLEI,		EVT_RESTART_XUNLEI,		RCN_RESTART_XUNLEI,	0},
+		{EVM_RESTART_ADBYBY,		EVT_RESTART_ADBYBY,		RCN_RESTART_ADBYBY,	0},
+		{EVM_RESTART_KMS,		EVT_RESTART_KMS,		RCN_RESTART_KMS,	0},
+		{EVM_RESTART_KOOLPROXY,		EVT_RESTART_KOOLPROXY,		RCN_RESTART_KOOLPROXY,	0},
+		{EVM_RESTART_DNSQ,		EVT_RESTART_DNSQ,		RCN_RESTART_DNSQ,	0},
 #endif
 #if defined(APP_SMBD) || defined(APP_NMBD)
 		{EVM_RESTART_NMBD,		EVT_RESTART_NMBD,		RCN_RESTART_NMBD,	0},
@@ -930,4 +936,5 @@
 		{EVM_RESTART_FIREWALL,		EVT_RESTART_FIREWALL,		RCN_RESTART_FIREWALL,	0},
 		{0,0,0,0}
 	};
+
 

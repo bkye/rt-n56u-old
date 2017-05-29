@@ -1,18 +1,5 @@
 /*
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
- * the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston,
- * MA 02111-1307 USA
+ * event_mask 
  */
 
 #ifndef _COMMON_H_
@@ -85,6 +72,11 @@ typedef u_int8_t u8;
 #define EVM_RESTART_ITUNES		(1ULL << 40)
 #define EVM_RESTART_TRMD		(1ULL << 41)
 #define EVM_RESTART_ARIA		(1ULL << 42)
+#define EVM_RESTART_XUNLEI		(1ULL << 43) //添加迅雷
+#define EVM_RESTART_ADBYBY		(1ULL << 44) //ADBYBY
+#define EVM_RESTART_KMS		    (1ULL << 45) //KMS
+#define EVM_RESTART_KOOLPROXY		    (1ULL << 46) //KKOOLPROXY
+#define EVM_RESTART_DNSQ		    (1ULL << 47) //DNS
 #define EVM_RESTART_REBOOT		(1ULL << 62)
 
 #define EVM_BLOCK_UNSAFE		(1ULL << 63) /* special case */
@@ -136,6 +128,11 @@ typedef u_int8_t u8;
 #define EVT_RESTART_ITUNES		2
 #define EVT_RESTART_TRMD		3
 #define EVT_RESTART_ARIA		3
+#define EVT_RESTART_XUNLEI		3 //添加迅雷
+#define EVT_RESTART_ADBYBY		3 //ADBYBY
+#define EVT_RESTART_KMS		    3 //KMS
+#define EVT_RESTART_KOOLPROXY	3 //KOOLPROXY
+#define EVT_RESTART_DNSQ	3 //DNSQ
 #define EVT_RESTART_REBOOT		40
 
 struct variable
@@ -154,9 +151,9 @@ struct svcLink
 
 struct evDesc
 {
-	u64 event_mask;
-	u32 max_time;
-	const char* notify_cmd;
+	u64 event_mask;						//名称
+	u32 max_time;						//
+	const char* notify_cmd;				//通知名称
 	u64 event_unmask;
 };
 

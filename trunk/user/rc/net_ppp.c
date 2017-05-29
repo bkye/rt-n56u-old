@@ -1,18 +1,5 @@
 /*
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
- * the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston,
- * MA 02111-1307 USA
+ * 修改是否发送LCP szqoyy2017.04.17
  */
 
 #include <stdio.h>
@@ -391,9 +378,11 @@ launch_wan_pppd(int unit, int wan_proto)
 		fprintf(fp, "nomppe nomppc\n");
 	}
 
-	/* echo failures (6*20s) */
-	fprintf(fp, "lcp-echo-interval %d\n", 20);
-	fprintf(fp, "lcp-echo-failure %d\n", 6);
+	/* echo failures (6*60s) szqoyy2017.04.17*/
+	if (get_wan_unit_value_int(unit, "ppp_lcp") > 0) {
+		fprintf(fp, "lcp-echo-interval %d\n", 60);
+		fprintf(fp, "lcp-echo-failure %d\n", 6);
+	}
 
 	if (get_wan_unit_value_int(unit, "ppp_alcp") > 0)
 		fprintf(fp, "lcp-echo-adaptive\n");

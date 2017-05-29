@@ -1,18 +1,7 @@
 /*
- * This program is free software; you can redistribute it and/or
- * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of
- * the License, or (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston,
- * MA 02111-1307 USA
+ * 路由器默认NVRAM设置参数
+ * 
+ * 
  */
 
 #include <ralink_boards.h>
@@ -132,7 +121,8 @@ struct nvram_pair router_defaults[] = {
 	{ "wan_ppp_peer", "" },			/* VPN server address */
 	{ "wan_ppp_auth", "0" },		/* PPP authentication */
 	{ "wan_ppp_mppe", "0" },		/* MPPE encryption */
-	{ "wan_ppp_alcp", "0" },		/* Adaptive LCP Echo */
+	{ "wan_ppp_alcp", "1" },		/* Adaptive LCP Echo */
+	{ "wan_ppp_lcp", "0" },		/* 是否发送 LCP Echo szqoyy2017.04.17 */
 	{ "wan_ppp_pppd", "" },			/* Custom PPPD options */
 
 	/* Exposed station */
@@ -381,6 +371,23 @@ struct nvram_pair router_defaults[] = {
 	{ "aria_pport", "16888" },
 	{ "aria_rport", "6800" },
 	{ "aria_ropen", "0" },
+	{ "xunlei_enable", "0" },//x迅雷
+	{ "xunlei_dir", "" },
+	{ "xunlei_sn", "" },
+	{ "adbyby_enable", "0"},//adbyby
+	{ "adbyby_dir", ""},
+	{ "adbyby_cpu", "0"},
+	{ "adbyby_whost", ""},
+	{ "adbyby_re_enable", "0"},
+	{ "adbyby_retime_hour", "3"},
+	{ "adbyby_retime_min", "00"},
+	{ "koolproxy_enable", "0"},
+	{ "koolproxy_https", "0"},
+	{ "kms_enable", "0"},//kms
+	{ "dnsq_enable", "0"},//dns
+	{ "dnsq_update_enable", "0"},//dns
+	{ "dnsq_hours", "3"},
+	{ "dnsq_min", "30"},
 	{ "hdd_spindt", "0" },
 	{ "hdd_apmoff", "0" },
 
@@ -779,3 +786,4 @@ struct nvram_pair tables_defaults[] = {
 
 	{ 0, 0 }
 };
+

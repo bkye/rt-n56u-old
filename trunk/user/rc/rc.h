@@ -591,6 +591,11 @@ int is_aria_support(void);
 void stop_aria(void);
 void run_aria(void);
 void restart_aria(void);
+void restart_xunlei(void);
+void restart_adbyby(void);
+void restart_koolproxy(void);
+void restart_kms(void);
+void restart_dnsq(void);
 #endif
 int count_stor_mountpoint(void);
 void umount_stor_path(struct disk_info_t *disks_info, int port, const char *dev_name, int do_spindown);
