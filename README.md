@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README #
 
 Welcome to the rt-n56u project
@@ -16,3 +17,6 @@ Contributors of this project are not responsible for what happens next.
 ### Contribution guidelines ###
 
 * To be completed
+=======
+# rt-56u
+>>>>>>> 5f39ccfbb9d469a9c7498e91063edf4e5573d5af

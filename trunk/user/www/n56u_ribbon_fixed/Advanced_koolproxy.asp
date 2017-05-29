@@ -35,7 +35,6 @@ function initial(){
 	show_banner(1);
 	show_menu(5,11,3);
 	show_footer();
-load_body();
 	if(found_app_koolproxy()){
 		$("tbl_koolproxy").style.display = "";
 		change_koolproxy_enable();
@@ -141,7 +140,7 @@ function applyRule(){
                                                 </div>
                                             </td>
                                         </tr>
-																				<tr id="row_koolproxy_https" style="display:none;">
+																				<tr id="row_koolproxy_https" >
                                             <th width="50%">
                                                 <#koolproxyhttps#>
                                             </th>

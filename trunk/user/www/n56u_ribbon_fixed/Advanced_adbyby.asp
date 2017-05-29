@@ -147,7 +147,7 @@ function applyRule(){
                                                 </div>
                                             </td>
                                         </tr>
-										<tr id="row_adbyby_cpu" style="display:none;">
+										<tr id="row_adbyby_cpu" >
                                             <th width="50%">
                                                 <#adbybycpu#>
                                             </th>
@@ -164,7 +164,7 @@ function applyRule(){
                                                 </div>
                                             </td>
                                         </tr>
-										 <tr id="row_adbyby_whost" style="display:none;">
+										 <tr id="row_adbyby_whost">
 										    <th>
                                              <#adbybywhost#>
                                             </th>
