@@ -1,22 +1,20 @@
-<<<<<<< HEAD
-# README #
 
-Welcome to the rt-n56u project
+原项目地址: https://bitbucket.org/padavan/rt-n56u
 
-This project aims to improve the rt-n56u and other supported devices on the software part, allowing power user to take full control over their hardware.
-This project was created in hope to be useful, but comes without warranty or support. Installing it will probably void your warranty. 
-Contributors of this project are not responsible for what happens next.
+汉化文件项目地址:https://git.oschina.net/gorden5566/padavan
+汉化文件说明:
+保持原项目目录结构
+添加汉化文件
+添加部分路由器适配文件
+联想newifi mini(NEWIFI-MINI)
+联想newifi2(NEWIFI-D1)
+优酷路由宝L1(YK-L1)
+斐讯K2(PSG1218)
+加入的功能说明:
+迅雷远程下载
+adbyby
+koolproxy
+kms
+dnsmaq去广告和FANQIANG
 
-### How do I get set up? ###
-
-* [Get the tools to build the system](https://bitbucket.org/padavan/rt-n56u/wiki/EN/HowToMakeFirmware) or [Download pre-built system image](https://bitbucket.org/padavan/rt-n56u/downloads)
-* Feed the device with the system image file (Follow instructions of updating your current system)
-* Perform factory reset
-* Open web browser on http://my.router to configure the services
-
-### Contribution guidelines ###
-
-* To be completed
-=======
-# rt-56u
 >>>>>>> 5f39ccfbb9d469a9c7498e91063edf4e5573d5af
