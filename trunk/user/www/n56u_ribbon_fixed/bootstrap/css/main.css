@@ -15,10 +15,10 @@ body.body_iframe{
 }
 
 #logo {
-    background-image: url("/bootstrap/img/newifi_logo.png");
-    width: 57px;
-    height: 54px;
-    margin-top: 55px;
+    background-image: url("/bootstrap/img/asus_logo.png");
+    width: 150px;
+    height: 71px;
+    margin-top: 40px;
 }
 #logo:hover {
     cursor: pointer;
