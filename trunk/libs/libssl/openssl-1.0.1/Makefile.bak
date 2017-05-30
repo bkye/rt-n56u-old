@@ -13,8 +13,8 @@ SHLIB_MAJOR=1
 SHLIB_MINOR=0.0
 SHLIB_EXT=.so.$(SHLIB_MAJOR).$(SHLIB_MINOR)
 PLATFORM=linux-mipsel
-OPTIONS=enable-shared --prefix=/ --install_prefix=/opt/newifi/trunk/stage --openssldir=/etc/ssl -ffunction-sections -fdata-sections -Wl,--gc-sections -I/opt/newifi/trunk/stage/include -DOPENSSL_USE_IPV6=1 -DOPENSSL_SMALL_FOOTPRINT -Wl,--gc-sections -L/opt/newifi/trunk/stage/lib no-ans1 no-capieng no-cast no-cms no-dso no-ec no-ec2m no-ec_nistp_64_gcc_128 no-ecdh no-ecdsa no-engine no-err no-gmp no-gost no-hw no-idea no-jpake no-krb5 no-md2 no-mdc2 no-rc2 no-rc5 no-rfc3779 no-ripemd no-rmd160 no-sctp no-seed no-sha0 no-smime no-speed no-srp no-sse2 no-ssl2 no-ssl3 no-static-engine no-store no-threads no-ts no-unit-test no-weak-ssl-ciphers no-whirlpool no-zlib no-zlib-dynamic no-static-engine
-CONFIGURE_ARGS=linux-mipsel shared --prefix=/ --install_prefix=/opt/newifi/trunk/stage --openssldir=/etc/ssl -ffunction-sections -fdata-sections -Wl,--gc-sections -I/opt/newifi/trunk/stage/include -DOPENSSL_USE_IPV6=1 -DOPENSSL_SMALL_FOOTPRINT -Wl,--gc-sections -L/opt/newifi/trunk/stage/lib no-speed no-capieng no-cms no-gmp no-jpake no-rfc3779 no-seed no-ec2m no-err no-threads no-idea no-rc2 no-rc5 no-ripemd no-rmd160 no-static-engine no-hw no-md2 no-sse2 no-dso no-ts no-sha0 no-mdc2 no-krb5 no-smime no-ans1 no-cast no-whirlpool no-sctp no-srp no-ssl2 no-ssl3 no-engine no-ec
+OPTIONS=enable-shared --prefix=/ --install_prefix=/opt/rt-n56u/trunk/stage --openssldir=/etc/ssl -ffunction-sections -fdata-sections -Wl,--gc-sections -I/opt/rt-n56u/trunk/stage/include -DOPENSSL_USE_IPV6=1 -DOPENSSL_SMALL_FOOTPRINT -Wl,--gc-sections -L/opt/rt-n56u/trunk/stage/lib no-ans1 no-capieng no-cast no-cms no-dso no-ec no-ec2m no-ec_nistp_64_gcc_128 no-ecdh no-ecdsa no-engine no-err no-gmp no-gost no-hw no-idea no-jpake no-krb5 no-md2 no-mdc2 no-rc2 no-rc5 no-rfc3779 no-ripemd no-rmd160 no-sctp no-seed no-sha0 no-smime no-speed no-srp no-sse2 no-ssl2 no-ssl3 no-static-engine no-store no-threads no-ts no-unit-test no-weak-ssl-ciphers no-whirlpool no-zlib no-zlib-dynamic no-static-engine
+CONFIGURE_ARGS=linux-mipsel shared --prefix=/ --install_prefix=/opt/rt-n56u/trunk/stage --openssldir=/etc/ssl -ffunction-sections -fdata-sections -Wl,--gc-sections -I/opt/rt-n56u/trunk/stage/include -DOPENSSL_USE_IPV6=1 -DOPENSSL_SMALL_FOOTPRINT -Wl,--gc-sections -L/opt/rt-n56u/trunk/stage/lib no-speed no-capieng no-cms no-gmp no-jpake no-rfc3779 no-seed no-ec2m no-err no-threads no-idea no-rc2 no-rc5 no-ripemd no-rmd160 no-static-engine no-hw no-md2 no-sse2 no-dso no-ts no-sha0 no-mdc2 no-krb5 no-smime no-ans1 no-cast no-whirlpool no-sctp no-srp no-ssl2 no-ssl3 no-engine no-ec
 SHLIB_TARGET=linux-shared
 
 # HERE indicates where this Makefile lives.  This can be used to indicate
@@ -25,7 +25,7 @@ HERE=.
 # INSTALL_PREFIX is for package builders so that they can configure
 # for, say, /usr/ and yet have everything installed to /tmp/somedir/usr/.
 # Normally it is left empty.
-INSTALL_PREFIX=/opt/newifi/trunk/stage
+INSTALL_PREFIX=/opt/rt-n56u/trunk/stage
 INSTALLTOP=/
 
 # Do not edit this manually. Use Configure --openssldir=DIR do change this!
@@ -59,12 +59,12 @@ OPENSSLDIR=/etc/ssl
 # equal 4.
 # PKCS1_CHECK - pkcs1 tests.
 
-CROSS_COMPILE= /opt/newifi/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-
+CROSS_COMPILE= /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-
 CC= $(CROSS_COMPILE)gcc -mips32r2 -march=mips32r2
-CFLAG= -fPIC -DOPENSSL_PIC -ffunction-sections -fdata-sections -I/opt/newifi/trunk/stage/include -DOPENSSL_USE_IPV6=1 -DOPENSSL_SMALL_FOOTPRINT -DOPENSSL_NO_ERR -O2 -fomit-frame-pointer -Wall -DSHA1_ASM -DSHA256_ASM -DAES_ASM
+CFLAG= -fPIC -DOPENSSL_PIC -ffunction-sections -fdata-sections -I/opt/rt-n56u/trunk/stage/include -DOPENSSL_USE_IPV6=1 -DOPENSSL_SMALL_FOOTPRINT -DOPENSSL_NO_ERR -O2 -fomit-frame-pointer -Wall -DSHA1_ASM -DSHA256_ASM -DAES_ASM
 DEPFLAG= -DOPENSSL_NO_ANS1 -DOPENSSL_NO_CAPIENG -DOPENSSL_NO_CAST -DOPENSSL_NO_CMS -DOPENSSL_NO_EC -DOPENSSL_NO_EC2M -DOPENSSL_NO_EC_NISTP_64_GCC_128 -DOPENSSL_NO_ECDH -DOPENSSL_NO_ECDSA -DOPENSSL_NO_ENGINE -DOPENSSL_NO_GMP -DOPENSSL_NO_GOST -DOPENSSL_NO_IDEA -DOPENSSL_NO_JPAKE -DOPENSSL_NO_MD2 -DOPENSSL_NO_MDC2 -DOPENSSL_NO_RC2 -DOPENSSL_NO_RC5 -DOPENSSL_NO_RFC3779 -DOPENSSL_NO_RIPEMD -DOPENSSL_NO_RMD160 -DOPENSSL_NO_SCTP -DOPENSSL_NO_SEED -DOPENSSL_NO_SHA0 -DOPENSSL_NO_SMIME -DOPENSSL_NO_SPEED -DOPENSSL_NO_SRP -DOPENSSL_NO_SSL2 -DOPENSSL_NO_SSL3 -DOPENSSL_NO_STORE -DOPENSSL_NO_TS -DOPENSSL_NO_UNIT_TEST -DOPENSSL_NO_WEAK_SSL_CIPHERS -DOPENSSL_NO_WHIRLPOOL
 PEX_LIBS= 
-EX_LIBS= -Wl,--gc-sections -Wl,--gc-sections -L/opt/newifi/trunk/stage/lib -ldl
+EX_LIBS= -Wl,--gc-sections -Wl,--gc-sections -L/opt/rt-n56u/trunk/stage/lib -ldl
 EXE_EXT= 
 ARFLAGS= 
 AR= $(CROSS_COMPILE)ar $(ARFLAGS) r

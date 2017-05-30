@@ -13,6 +13,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston,
  * MA 02111-1307 USA
+ * last 20170530 bkye
  */
 
 #ifndef _defaults_h_
@@ -35,12 +36,12 @@
 
 #define DEF_WLAN_2G_CC		"CN"
 #define DEF_WLAN_5G_CC		"GB"
-#define DEF_WLAN_2G_SSID	"HH"
-#define DEF_WLAN_5G_SSID	"HH_5G"
-#define DEF_WLAN_2G_GSSID	"HH_G"
-#define DEF_WLAN_5G_GSSID	"HH_5G_G"
-#define DEF_WLAN_2G_PSK		"03301212hh"
-#define DEF_WLAN_5G_PSK		"03301212hh"
+#define DEF_WLAN_2G_SSID	"Newifi"
+#define DEF_WLAN_5G_SSID	"Newifi_5G"
+#define DEF_WLAN_2G_GSSID	"Newifi_G"
+#define DEF_WLAN_5G_GSSID	"Newifi_5G_G"
+#define DEF_WLAN_2G_PSK		"123456"
+#define DEF_WLAN_5G_PSK		"123456"
 
 #define DEF_ROOT_PASSWORD	"admin"
 #define DEF_SMB_WORKGROUP	"WORKGROUP"

@@ -1,4 +1,5 @@
 #!/bin/sh
+#last update 20170530 by bkye 
 dnsqenable=`nvram get dnsq_enable`
 dnsqhour=`nvram get dnsq_hours`
 dnsqmin=`nvram get dnsq_min`

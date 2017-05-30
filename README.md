@@ -1,22 +1,26 @@
-<<<<<<< HEAD
-# README #
+Padavan修改源码 by bkye<br>
+------------------------------------------
+last update:20170530<br>
+同步了Padavan的最新源码19224e2<br>
+------------------------------------------
+原项目地址: https://bitbucket.org/padavan/rt-n56u<br>
 
-Welcome to the rt-n56u project
+汉化文件项目地址:https://git.oschina.net/gorden5566/padavan <br>
+汉化文件说明: <br>
+保持原项目目录结构 <br>
+添加汉化文件 <br>
+添加部分路由器适配文件 <br>
+联想newifi mini(NEWIFI-MINI) <br>
+联想newifi2(NEWIFI-D1) <br>
+优酷路由宝L1(YK-L1) <br>
+斐讯K2(PSG1218) <br>
+加入的功能说明: <br>
+迅雷远程下载 <br>
+adbyby <br>
+koolproxy <br>
+kms <br>
+dnsmaq去广告和FANQIANG<br>
 
-This project aims to improve the rt-n56u and other supported devices on the software part, allowing power user to take full control over their hardware.
-This project was created in hope to be useful, but comes without warranty or support. Installing it will probably void your warranty. 
-Contributors of this project are not responsible for what happens next.
-
-### How do I get set up? ###
-
-* [Get the tools to build the system](https://bitbucket.org/padavan/rt-n56u/wiki/EN/HowToMakeFirmware) or [Download pre-built system image](https://bitbucket.org/padavan/rt-n56u/downloads)
-* Feed the device with the system image file (Follow instructions of updating your current system)
-* Perform factory reset
-* Open web browser on http://my.router to configure the services
-
-### Contribution guidelines ###
-
-* To be completed
-=======
-# rt-56u
->>>>>>> 5f39ccfbb9d469a9c7498e91063edf4e5573d5af
+源码默认的配置文件是newifi mini的，请根据自己的路由器进行修改。<br>
+默认IP:192.168.99.1<br>
+WIFI默认密码:123456<br>
