@@ -1,6 +1,6 @@
 /* PHICOMM PSG1218 */
 
-#define BOARD_PID		"PSG1218-256"
+#define BOARD_PID		"256PSG1218"
 #define BOARD_NAME		"K2"
 #define BOARD_DESC		"PHICOMM K2 Wireless Router"
 #define BOARD_VENDOR_NAME	"PHICOMM"

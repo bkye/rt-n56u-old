@@ -751,9 +751,9 @@ LED_CONTROL(int gpio_led, int flag)
 #endif
 #if defined (CONFIG_RALINK_MT7628) && (BOARD_GPIO_LED_WIFI == 44)
 	if (gpio_led == BOARD_GPIO_LED_WIFI) {
-		cpu_gpio_mode_set_bit(32, (flag == LED_OFF) ? 1 : 0); // change GPIO Mode for WLED_AN
-		cpu_gpio_mode_set_bit(48, (flag == LED_OFF) ? 1 : 0); // change GPIO Mode for WLED_KN
-		cpu_gpio_set_pin(gpio_led, LED_OFF); // always set GPIO to high
+        //cpu_gpio_mode_set_bit(32, (flag == LED_OFF) ? 1 : 0); // change GPIO Mode for WLED_AN
+        //cpu_gpio_mode_set_bit(48, (flag == LED_OFF) ? 1 : 0); // change GPIO Mode for WLED_KN
+        cpu_gpio_set_pin(gpio_led, flag); // always set GPIO to high
 	} else
 #endif
 #endif

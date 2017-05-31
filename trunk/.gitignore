@@ -24,3 +24,5 @@ stamp-h1
 /images/*
 /stage
 /stage/*
+/trunk/libs/libssl/openssl-1.0.1/Makefile
+/trunk/libs/libssl/openssl-1.0.1/Makefile.bak

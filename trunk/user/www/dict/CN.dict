@@ -1804,9 +1804,8 @@ Storagekoolproxyenable=开启koolproxy？
 koolproxyhttps=开启https过滤？
 dnsqabout=去广告hosts来自<a href="https://github.com/vokins/yhosts/" target="_blank">https://github.com/vokins/yhosts/</a><br>FQ dnsmasq来自<a href="https://github.com/sy618/hosts" target="_blank">https://github.com/sy618/hosts</a><br>优点：解析快，消耗极少CPU资源，非常适合路由器使用。GFW翻墙、过滤广告无需证书，可部分代替s-s。<br>缺点：易失效，这一切美好的事情，全靠规则维护者的维护
 Storagednsq=Dnsmasq规则
-Storagednsqenable=开启Dnsmasq规则？
 dnsqupdate=Dnsmasq规则自动更新时间:
 dnsqtimeon=开启定时更新规则？
-dnspcchange=Hosts文件选择:
-dnsphonehost=标准hosts文件(推荐)
-dnspchost=针对PC不带屏蔽视频广告的hosts文件
+dnsq_all=开启dnsmasq规则？
+dnsq_fq_v=加载翻墙规则？
+dnsq_ad_v=加载去广告规则？

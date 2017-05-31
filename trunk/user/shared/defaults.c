@@ -385,6 +385,8 @@ struct nvram_pair router_defaults[] = {
 	{ "koolproxy_https", "0"},
 	{ "kms_enable", "0"},//kms
 	{ "dnsq_enable", "0"},//dns
+	{ "dnsq_fq_enable", "0"},
+	{ "dnsq_ad_enable", "0"},
 	{ "dnsq_update_enable", "0"},//dns
 	{ "dnsq_hours", "3"},
 	{ "dnsq_min", "30"},

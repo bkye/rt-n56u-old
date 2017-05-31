@@ -77,14 +77,14 @@ if [ "$ID_FS_TYPE" == "msdos" -o "$ID_FS_TYPE" == "vfat" ] ; then
 	kernel_vfat=`modprobe -l | grep vfat`
 	if [ -n "$kernel_vfat" ] ; then
 		func_load_module vfat
-		mount -t vfat "$dev_full" "$dev_mount" -o noatime,umask=0,iocharset=utf8,codepage=866,shortname=winnt
+		mount -t vfat "$dev_full" "$dev_mount" -o noatime,umask=0,shortname=winnt
 	else
 		func_load_module exfat
-		mount -t exfat "$dev_full" "$dev_mount" -o noatime,umask=0,iocharset=utf8
+		mount -t exfat "$dev_full" "$dev_mount" -o noatime,umask=0
 	fi
 elif [ "$ID_FS_TYPE" == "exfat" ] ; then
 	func_load_module exfat
-	mount -t exfat "$dev_full" "$dev_mount" -o noatime,umask=0,iocharset=utf8
+	mount -t exfat "$dev_full" "$dev_mount" -o noatime,umask=0
 elif [ "$ID_FS_TYPE" == "ntfs" ] ; then
 	if [ "$achk_enable" != "0" ] && [ -x /sbin/chkntfs ] ; then
 		/sbin/chkntfs -a -f --verbose "$dev_full" > "/tmp/chkntfs_result_$1" 2>&1

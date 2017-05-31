@@ -4,5 +4,5 @@
 # PSG1218-256   # PHICOMM K2            # MT7620  #
 ##################################################################
 
-CFLAGS += -DBOARD_NEWIFIMINI
+CFLAGS += -DBOARD_256PSG1218 -DVENDOR_PHICOMM
 BOARD_NUM_USB_PORTS=1

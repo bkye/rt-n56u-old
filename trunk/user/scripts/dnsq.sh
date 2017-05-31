@@ -1,10 +1,11 @@
 #!/bin/sh
-#last update 20170530 by bkye 
+#last update 20170531 by bkye 
 dnsqenable=`nvram get dnsq_enable`
 dnsqhour=`nvram get dnsq_hours`
 dnsqmin=`nvram get dnsq_min`
 dnsqreset=`nvram get dnsq_update_enable`
-
+dnsqfq=`nvram get dnsq_fq_enable`
+dnsqad=`nvram get dnsq_ad_enable`
 if [ "$dnsqenable" != 1 ]; then
 logger -t "dnsmasq" "正在还原dnsmasq规则..."
 #删除dnsmasq.conf的修改内容
@@ -23,9 +24,8 @@ rm -rf /etc/storage/dnsmasq/dns
 /sbin/restart_dhcpd
 logger -t "dnsmasq" "dnsmasq规则还原成功！"
 exit 0
-fi
-if [ ! -d "/etc/storage/dnsmasq/dns" ]; then
-logger -t "dnsmasq" "正在配置dnsmasq规则..."
+else
+logger -t "dnsmasq" "正在重新配置dnsmasq规则..."
 #mkdir -p /etc/storage/dnsmasq/dns
 ##在“dnsmasq.conf”配置文件里指向规则文件路径
 #指定hosts规则文件
@@ -59,35 +59,52 @@ EOF
 ##▼开始下载文件并重启dnsmasq生效
 rm -rf /etc/storage/dnsmasq/dns;cd /etc
 mkdir -p /etc/storage/dnsmasq/dns/conf
+
+if [ "$dnsqad" -eq 1 ]; then
 #下载hosts
 logger -t "dnsmasq" "开始下载相关hosts和规则！"
 cd /etc/storage/dnsmasq/dns
 wget --no-check-certificate https://raw.githubusercontent.com/vokins/yhosts/master/hosts -O hosts;sed -i "1 i\## update：$(date "+%Y-%m-%d %H:%M:%S")" hosts
 if [ ! -f "hosts" ]; then
 logger -t "dnsmasq" "host文件下载失败，可能是地址失效或者网络异常！"
+sed -i '/hosts/d' /etc/storage/dnsmasq/dnsmasq.conf
 else
 logger -t "dnsmasq" "host文件下载完成。"
 fi
+cd /etc/storage/dnsmasq/dns/conf
+wget --no-check-certificate https://raw.githubusercontent.com/sy618/hosts/master/dnsmasq/dnsad -O dnsad;sed -i "1 i\## update：$(date "+%Y-%m-%d %H:%M:%S")" dnsad
+if [ ! -f "dnsad" ]; then
+logger -t "dnsmasq" "屏蔽广告家族文件下载失败，可能是地址失效或者网络异常！"
+sed -i '/dnsad/d' /etc/storage/dnsmasq/dnsmasq.conf
+else
+logger -t "dnsmasq" "屏蔽广告家族文件下载完成。"
+fi
+else
+sed -i '/dnsad/d' /etc/storage/dnsmasq/dnsmasq.conf
+sed -i '/hosts/d' /etc/storage/dnsmasq/dnsmasq.conf
+fi
+if ["$dnsqfq" -eq 1]; then
 #下载dnsmasq规则
 cd /etc/storage/dnsmasq/dns/conf
 wget --no-check-certificate https://raw.githubusercontent.com/sy618/hosts/master/dnsmasq/dnsfq -O dnsfq;sed -i "1 i\## update：$(date "+%Y-%m-%d %H:%M:%S")" dnsfq
 if [ ! -f "dnsfq" ]; then
 logger -t "dnsmasq" "GFW翻墙文件下载失败，可能是地址失效或者网络异常！"
+sed -i '/dnsfq/d' /etc/storage/dnsmasq/dnsmasq.conf
 else
 logger -t "dnsmasq" "GFW翻墙文件下载完成。"
 fi
+else
+sed -i '/dnsfq/d' /etc/storage/dnsmasq/dnsmasq.conf
+fi
+cd /etc/storage/dnsmasq/dns/conf
 wget --no-check-certificate https://raw.githubusercontent.com/sy618/hosts/master/dnsmasq/dnsip -O dnsip;sed -i "1 i\## update：$(date "+%Y-%m-%d %H:%M:%S")" dnsip
 if [ ! -f "dnsip" ]; then
 logger -t "dnsmasq" "屏蔽运营商劫持文件下载失败，可能是地址失效或者网络异常！"
+sed -i '/dnsip/d' /etc/storage/dnsmasq/dnsmasq.conf
 else
 logger -t "dnsmasq" "屏蔽运营商劫持文件下载完成。"
 fi
-wget --no-check-certificate https://raw.githubusercontent.com/sy618/hosts/master/dnsmasq/dnsad -O dnsad;sed -i "1 i\## update：$(date "+%Y-%m-%d %H:%M:%S")" dnsad
-if [ ! -f "dnsad" ]; then
-logger -t "dnsmasq" "屏蔽广告家族文件下载失败，可能是地址失效或者网络异常！"
-else
-logger -t "dnsmasq" "屏蔽广告家族文件下载完成。"
-fi
+
 #重启dnsmasq
 logger -t "dnsmasq" "正在重启dnsmasq..."
 /sbin/restart_dhcpd
@@ -95,44 +112,6 @@ sed -i '/dnsq/d' /etc/storage/post_wan_script.sh
 cat >> /etc/storage/post_wan_script.sh << EOF
 /usr/bin/dnsq.sh&
 EOF
-logger -t "dnsmasq" "dnsmasq规则文件加载完毕。"
-else
-#############################
-##▼开始下载文件并重启dnsmasq生效
-rm -rf /etc/storage/dnsmasq/dns;cd /etc
-mkdir -p /etc/storage/dnsmasq/dns/conf
-#下载hosts
-logger -t "dnsmasq" "开始下载相关hosts和规则！"
-cd /etc/storage/dnsmasq/dns
-wget --no-check-certificate https://raw.githubusercontent.com/vokins/yhosts/master/hosts -O hosts;sed -i "1 i\## update：$(date "+%Y-%m-%d %H:%M:%S")" hosts
-if [ ! -f "hosts" ]; then
-logger -t "dnsmasq" "host文件下载失败，可能是地址失效或者网络异常！"
-else
-logger -t "dnsmasq" "host文件下载完成。"
-fi
-#下载dnsmasq规则
-cd /etc/storage/dnsmasq/dns/conf
-wget --no-check-certificate https://raw.githubusercontent.com/sy618/hosts/master/dnsmasq/dnsfq -O dnsfq;sed -i "1 i\## update：$(date "+%Y-%m-%d %H:%M:%S")" dnsfq
-if [ ! -f "dnsfq" ]; then
-logger -t "dnsmasq" "GFW翻墙文件下载失败，可能是地址失效或者网络异常！"
-else
-logger -t "dnsmasq" "GFW翻墙文件下载完成。"
-fi
-wget --no-check-certificate https://raw.githubusercontent.com/sy618/hosts/master/dnsmasq/dnsip -O dnsip;sed -i "1 i\## update：$(date "+%Y-%m-%d %H:%M:%S")" dnsip
-if [ ! -f "dnsip" ]; then
-logger -t "dnsmasq" "屏蔽运营商劫持文件下载失败，可能是地址失效或者网络异常！"
-else
-logger -t "dnsmasq" "屏蔽运营商劫持文件下载完成。"
-fi
-wget --no-check-certificate https://raw.githubusercontent.com/sy618/hosts/master/dnsmasq/dnsad -O dnsad;sed -i "1 i\## update：$(date "+%Y-%m-%d %H:%M:%S")" dnsad
-if [ ! -f "dnsad" ]; then
-logger -t "dnsmasq" "屏蔽广告家族文件下载失败，可能是地址失效或者网络异常！"
-else
-logger -t "dnsmasq" "屏蔽广告家族文件下载完成。"
-fi
-#重启dnsmasq
-logger -t "dnsmasq" "正在重启dnsmasq..."
-/sbin/restart_dhcpd
 logger -t "dnsmasq" "dnsmasq规则文件加载完毕。"
 sed -i '/dnsq/d' /etc/storage/post_wan_script.sh
 cat >> /etc/storage/post_wan_script.sh << EOF

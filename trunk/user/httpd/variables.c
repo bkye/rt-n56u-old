@@ -243,6 +243,8 @@
 			{"koolproxy_enable", "", NULL, EVM_RESTART_KOOLPROXY},//Koolproxy
 			{"koolproxy_https", "", NULL, EVM_RESTART_KOOLPROXY},//Koolproxy
 			{"dnsq_enable", "", NULL, EVM_RESTART_DNSQ},//DNS
+			{"dnsq_fq_enable", "", NULL, EVM_RESTART_DNSQ},//DNS
+			{"dnsq_ad_enable", "", NULL, EVM_RESTART_DNSQ},//DNS
 			{"dnsq_update_enable", "", NULL, EVM_RESTART_DNSQ},
 			{"dnsq_hours", "", NULL, EVM_RESTART_DNSQ},
 			{"dnsq_min", "", NULL, EVM_RESTART_DNSQ},
