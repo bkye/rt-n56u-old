@@ -1802,7 +1802,7 @@ koolproxyabout=koolproxy去广告，支持https.<br>koolproxy二进制更新文�
 Storagekoolproxy=koolproxy
 Storagekoolproxyenable=开启koolproxy？
 koolproxyhttps=开启https过滤？
-dnsqabout=项目地址:<a href="https://github.com/sy618/hosts" target="_blank">https://github.com/sy618/hosts</a><br>优点：解析快，消耗极少CPU资源，非常适合路由器使用。GFW翻墙、过滤广告无需证书，可部分代替s-s。<br>缺点：易失效，这一切美好的事情，全靠规则维护者的维护<br>
+dnsqabout=去广告hosts来自<a href="https://github.com/vokins/yhosts/" target="_blank">https://github.com/vokins/yhosts/</a><br>FQ dnsmasq来自<a href="https://github.com/sy618/hosts" target="_blank">https://github.com/sy618/hosts</a><br>优点：解析快，消耗极少CPU资源，非常适合路由器使用。GFW翻墙、过滤广告无需证书，可部分代替s-s。<br>缺点：易失效，这一切美好的事情，全靠规则维护者的维护
 Storagednsq=Dnsmasq规则
 Storagednsqenable=开启Dnsmasq规则？
 dnsqupdate=Dnsmasq规则自动更新时间:
