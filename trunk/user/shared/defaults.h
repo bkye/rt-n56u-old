@@ -36,12 +36,12 @@
 
 #define DEF_WLAN_2G_CC		"CN"
 #define DEF_WLAN_5G_CC		"GB"
-#define DEF_WLAN_2G_SSID	"Newifi"
-#define DEF_WLAN_5G_SSID	"Newifi_5G"
-#define DEF_WLAN_2G_GSSID	"Newifi_G"
-#define DEF_WLAN_5G_GSSID	"Newifi_5G_G"
-#define DEF_WLAN_2G_PSK		"123456"
-#define DEF_WLAN_5G_PSK		"123456"
+#define DEF_WLAN_2G_SSID	"ASUS"
+#define DEF_WLAN_5G_SSID	"ASUS_5G"
+#define DEF_WLAN_2G_GSSID	"ASUS_G"
+#define DEF_WLAN_5G_GSSID	"ASUS_5G_G"
+#define DEF_WLAN_2G_PSK		"1234567890"
+#define DEF_WLAN_5G_PSK		"1234567890"
 
 #define DEF_ROOT_PASSWORD	"admin"
 #define DEF_SMB_WORKGROUP	"WORKGROUP"
