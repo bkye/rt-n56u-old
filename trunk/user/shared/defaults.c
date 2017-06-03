@@ -374,7 +374,9 @@ struct nvram_pair router_defaults[] = {
 	{ "xunlei_enable", "0" },//x迅雷
 	{ "xunlei_dir", "" },
 	{ "xunlei_sn", "" },
-	{ "adbyby_enable", "0"},//adbyby
+	{ "ad_enable", "0" },
+	{ "ad_change", "1"},//adbyby
+	{ "ad_dir", "2"},
 	{ "adbyby_dir", ""},
 	{ "adbyby_cpu", "0"},
 	{ "adbyby_whost", ""},

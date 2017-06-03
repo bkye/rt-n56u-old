@@ -1090,7 +1090,7 @@ void stop_aria(void)
 void run_aria(void)
 {
 	char *apps_name = "Aria";
-	char *link_path = "/mnt/aria";
+	char *link_path = "/media/AiDisk_a1/aria";
 	char *dest_dir = "aria";
 
 	if (!nvram_match("aria_enable", "1"))
@@ -1102,11 +1102,11 @@ void run_aria(void)
 	if (is_aria_run())
 		return;
 
-	unlink(link_path);
+	/*unlink(link_path);
 	if (!create_mp_link(dest_dir, link_path, 0)) {
 		logmessage(apps_name, "Cannot start: please create dir \"%s\" on target volume!", dest_dir);
 		return;
-	}
+	}*/
 
 	eval("/usr/bin/aria.sh", "start");
 }

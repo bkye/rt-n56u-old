@@ -234,14 +234,19 @@
 			{"aria_pport", "", NULL, EVM_RESTART_ARIA},
 			{"aria_rport", "", NULL, EVM_RESTART_ARIA},
 #endif
+#if defined(APP_ADBYBY)
+			{"ad_enable", "", NULL, EVM_RESTART_ADBYBY},//ad
+			{"ad_change", "", NULL, EVM_RESTART_ADBYBY},//ad
+			{"ad_dir", "", NULL, EVM_RESTART_ADBYBY},//ad
+			{"adbyby_dir", "", NULL, EVM_RESTART_ADBYBY},
+			{"adbyby_cpu", "", NULL, EVM_RESTART_ADBYBY},//Koolproxy
+			{"koolproxy_https", "", NULL, EVM_RESTART_ADBYBY},//Koolproxy
+#endif
+#if defined(APP_XUNLEI)			
 			{"xunlei_enable", "", NULL, EVM_RESTART_XUNLEI}, //迅雷远程
 			{"xunlei_dir", "", NULL, EVM_RESTART_XUNLEI},
-			{"adbyby_enable", "", NULL, EVM_RESTART_ADBYBY},//adbyby
-			{"adbyby_dir", "", NULL, EVM_RESTART_ADBYBY},
-			{"adbyby_cpu", "", NULL, EVM_RESTART_ADBYBY},
+#endif
 			{"kms_enable", "", NULL, EVM_RESTART_KMS},//KMS
-			{"koolproxy_enable", "", NULL, EVM_RESTART_KOOLPROXY},//Koolproxy
-			{"koolproxy_https", "", NULL, EVM_RESTART_KOOLPROXY},//Koolproxy
 			{"dnsq_enable", "", NULL, EVM_RESTART_DNSQ},//DNS
 			{"dnsq_fq_enable", "", NULL, EVM_RESTART_DNSQ},//DNS
 			{"dnsq_ad_enable", "", NULL, EVM_RESTART_DNSQ},//DNS
@@ -925,11 +930,15 @@
 #if defined(APP_ARIA)
 		{EVM_RESTART_ARIA,		EVT_RESTART_ARIA,		RCN_RESTART_ARIA,	EVM_RESTART_FIREWALL},
 #endif
-		/*迅雷和ADBYBY/KMS支持*/
-		{EVM_RESTART_XUNLEI,		EVT_RESTART_XUNLEI,		RCN_RESTART_XUNLEI,	0},
+#if defined(APP_ADBYBY)
 		{EVM_RESTART_ADBYBY,		EVT_RESTART_ADBYBY,		RCN_RESTART_ADBYBY,	0},
+#endif
+#if defined(APP_XUNLEI)
+		{EVM_RESTART_XUNLEI,		EVT_RESTART_XUNLEI,		RCN_RESTART_XUNLEI,	0},
+#endif
+		/*迅雷和ADBYBY/KMS支持*/
 		{EVM_RESTART_KMS,		EVT_RESTART_KMS,		RCN_RESTART_KMS,	0},
-		{EVM_RESTART_KOOLPROXY,		EVT_RESTART_KOOLPROXY,		RCN_RESTART_KOOLPROXY,	0},
+		//{EVM_RESTART_KOOLPROXY,		EVT_RESTART_KOOLPROXY,		RCN_RESTART_KOOLPROXY,	0},
 		{EVM_RESTART_DNSQ,		EVT_RESTART_DNSQ,		RCN_RESTART_DNSQ,	0},
 #endif
 #if defined(APP_SMBD) || defined(APP_NMBD)

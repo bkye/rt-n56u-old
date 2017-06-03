@@ -384,7 +384,7 @@ tabtitle[7] = new Array("", "<#menu5_10_1#>", "<#menu5_10_2#>", "<#menu5_10_3#>"
 tabtitle[8] = new Array("", "<#menu5_11#>", "<#menu5_12#>", "WAN", "", "", "", "", "", "", "");
 tabtitle[9] = new Array("", "<#menu5_7_2#>", "<#menu5_7_3#>", "<#menu5_7_5#>", "<#menu5_7_6#>", "<#menu5_7_8#>");
 //加入扩展设置
-tabtitle[10] = new Array("", "<#menu5_4_6#>", "<#menu5_13_2#>", "<#menu5_13_3#>", "<#menu5_13_4#>", "<#menu5_13_5#>");
+tabtitle[10] = new Array("", "<#menu5_4_6#>", "<#menu5_13_2#>", "<#menu5_13_4#>", "<#menu5_13_5#>", "<#menu5_13_6#>");
 
 //Level 3 Tab title
 var tablink = new Array(10);
@@ -399,7 +399,7 @@ tablink[7] = new Array("", "Advanced_Tweaks_Content.asp", "Advanced_Scripts_Cont
 tablink[8] = new Array("", "Main_WStatus2g_Content.asp", "Main_WStatus_Content.asp", "", "", "", "", "", "", "", "");
 tablink[9] = new Array("", "Main_LogStatus_Content.asp", "Main_DHCPStatus_Content.asp", "Main_IPTStatus_Content.asp", "Main_RouteStatus_Content.asp", "Main_CTStatus_Content.asp");
 //扩展设置菜单
-tablink[10] = new Array("", "Advanced_xunlei.asp", "Advanced_adbyby.asp", "Advanced_koolproxy.asp", "Advanced_kms.asp", "Advanced_dnsq.asp");
+tablink[10] = new Array("", "Advanced_xunlei.asp", "Advanced_adbyby.asp", "Advanced_kms.asp", "Advanced_dnsq.asp" , "aria.asp");
 //Level 2 Menu
 menuL2_title = new Array("", "<#menu5_11#>", "<#menu5_12#>", "<#menu5_2#>", "<#menu5_3#>", "<#menu5_5#>", "<#menu5_4#>", "<#menu5_6#>", "<#menu5_10#>", "<#menu5_9#>", "<#menu5_7#>", "<#menu5_13#>");
 menuL2_link  = new Array("", tablink[0][1], tablink[1][1], tablink[2][1], tablink[3][1], tablink[4][1], tablink[5][1], tablink[6][1], tablink[7][1], tablink[8][1], tablink[9][1], tablink[10][1]);
@@ -510,6 +510,18 @@ function show_menu(L1, L2, L3){
 			menuL1_title[2] = "";
 		}
 	}
+			if(!found_app_xunlei()){
+			tablink[10][1] = "";  //remove Xware
+			tabtitle[10][1]="";
+                        menuL2_link[11]=tablink[10][2];
+		} 
+            if(!found_app_adbyby()){
+			tablink[10][2] = "";  //remove adbyby
+			tabtitle[10][2]="";
+     if(tabtitle[10][1]==""){
+menuL2_link[11]=tablink[10][3];
+}
+}
 
 	for(i = 1; i <= menuL1_title.length-1; i++){
 		if(menuL1_title[i] == "")

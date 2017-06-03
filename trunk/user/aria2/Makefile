@@ -1,4 +1,4 @@
-SRC_NAME=aria2-1.15.2
+SRC_NAME=aria2-1.32.0
 
 CFLAGS  += -ffunction-sections -fdata-sections
 CXXFLAGS += -ffunction-sections -fdata-sections
@@ -52,6 +52,7 @@ clean:
 romfs:
 ifeq ($(CONFIG_FIRMWARE_INCLUDE_ARIA_WEB_CONTROL),y)
 	cp -rf $(THISDIR)/ariaweb $(INSTALLDIR)/www
+	cp -rf $(THISDIR)/aria.asp $(INSTALLDIR)/www
 	cd $(INSTALLDIR)/www/ariaweb && ln -sf /mnt/aria/config/configuration.js configuration.js
 endif
 	$(ROMFSINST) $(THISDIR)/$(SRC_NAME)/src/aria2c /usr/bin/aria2c

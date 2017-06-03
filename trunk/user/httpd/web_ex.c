@@ -2020,9 +2020,16 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 #else
 	int found_app_aria = 0;
 #endif
-	int found_app_xunlei = 1;  //Ô¶³ÌÑ¸À×
-	int found_app_adbyby = 1;  //adbyby
-	int found_app_koolproxy=1;//kp
+#if defined(APP_ADBYBY)
+	int found_app_adbyby = 1;
+#else
+	int found_app_adbyby = 0;
+#endif
+#if defined(APP_XUNLEI)
+	int found_app_xunlei = 1;
+#else
+	int found_app_xunlei = 0;
+#endif
 	int found_app_kms=1;   //KMS
 	int found_app_dnsq=1;   //dns
 #if defined(APP_NFSD)
@@ -2205,7 +2212,7 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 		found_app_aria,
 		found_app_xunlei,  //Ô¶³ÌÑ¸À×
 		found_app_adbyby,  //adbyby
-		found_app_koolproxy, //kp
+		//found_app_koolproxy, //kp
 		found_app_kms,     //kms
 		found_app_dnsq,     //DNS
 		found_app_nfsd,

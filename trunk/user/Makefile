@@ -139,7 +139,8 @@ dir_$(CONFIG_FIRMWARE_INCLUDE_FIREFLY)		+= firefly
 dir_$(CONFIG_FIRMWARE_INCLUDE_TRANSMISSION)	+= transmission
 dir_$(CONFIG_FIRMWARE_INCLUDE_ARIA)		+= aria2
 endif
-
+dir_$(CONFIG_FIRMWARE_INCLUDE_XUNLEI)		+= xware
+dir_$(CONFIG_FIRMWARE_INCLUDE_ADBYBY)		+= adbyby
 ifdef CONFIG_MTD_UBI
 ifneq ($(STORAGE_ENABLED),y)
 dir_y						+= util-linux

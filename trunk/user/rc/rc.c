@@ -1155,19 +1155,19 @@ handle_notifications(void)
 			restart_aria();
 		}
 #endif
-/*迅雷远程、ADBYBY/KMS通知*/
-		else if (strcmp(entry->d_name, RCN_RESTART_XUNLEI) == 0)
-		{
-			restart_xunlei();
-		}
+#if defined(APP_ADBYBY)
 		else if (strcmp(entry->d_name, RCN_RESTART_ADBYBY) == 0)
 		{
 			restart_adbyby();
 		}
-		else if (strcmp(entry->d_name, RCN_RESTART_KOOLPROXY) == 0)
+#endif
+#if defined(APP_XUNLEI)
+		else if (strcmp(entry->d_name, RCN_RESTART_XUNLEI) == 0)
 		{
-			restart_koolproxy();
+			restart_xunlei();
 		}
+#endif
+/*迅雷远程、ADBYBY/KMS通知*/
 		else if (strcmp(entry->d_name, RCN_RESTART_KMS) == 0)
 		{
 			restart_kms();

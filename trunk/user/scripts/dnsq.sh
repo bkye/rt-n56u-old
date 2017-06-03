@@ -83,7 +83,7 @@ else
 sed -i '/dnsad/d' /etc/storage/dnsmasq/dnsmasq.conf
 sed -i '/hosts/d' /etc/storage/dnsmasq/dnsmasq.conf
 fi
-if ["$dnsqfq" -eq 1 ]; then
+if [ "$dnsqfq" -eq 1 ]; then
 #下载dnsmasq规则
 cd /etc/storage/dnsmasq/dns/conf
 wget --no-check-certificate https://raw.githubusercontent.com/sy618/hosts/master/dnsmasq/dnsfq -O dnsfq;sed -i "1 i\## update：$(date "+%Y-%m-%d %H:%M:%S")" dnsfq
