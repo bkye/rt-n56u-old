@@ -1,5 +1,5 @@
 #!/bin/sh
-#addir=`nvram get ad_dir`
+addir=`nvram get ad_dir`
 #adbybydir=`nvram get dlna_src1`
 adenable=`nvram get ad_enable`
 adchange=`nvram get ad_change`
