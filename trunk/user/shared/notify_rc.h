@@ -1,7 +1,5 @@
 /*
- * 这里是默认通知表
- * 在httpd/variables.c中，会有引用建立通知表
- * szqoyy2017.04.25 添加迅雷通知
+ * Last update 20170607 by bkye
  */
 
 #ifndef NOTIFY_RC_H
@@ -49,11 +47,12 @@
 #define RCN_RESTART_ITUNES		"restart_itunes"
 #define RCN_RESTART_TRMD		"restart_trmd"
 #define RCN_RESTART_ARIA		"restart_aria"
-#define RCN_RESTART_XUNLEI		"restart_xunlei" //迅雷
-#define RCN_RESTART_ADBYBY		"restart_adbyby" //adbyby
-#define RCN_RESTART_KOOLPROXY		"restart_koolproxy" //kp
-#define RCN_RESTART_KMS		    "restart_kms" //kms
-#define RCN_RESTART_DNSQ	    "restart_dnsq" //dns
+#define RCN_RESTART_XUNLEI		"restart_xunlei"
+#define RCN_RESTART_ADBYBY		"restart_adbyby"
+#define RCN_RESTART_KOOLPROXY		"restart_koolproxy"
+#define RCN_RESTART_KMS		    "restart_kms"
+#define RCN_RESTART_DNSQ	    "restart_dnsq"
+#define RCN_RESTART_NGROK	    "restart_ngrok"
 #define RCN_RESTART_REBOOT		"restart_reboot"
 
 ////////////////////////////////////////////////////////////

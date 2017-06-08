@@ -197,3 +197,15 @@ endif
 ifeq ($(CONFIG_FIRMWARE_INCLUDE_XUNLEI),y)
          CFLAGS += -DAPP_XUNLEI
 endif
+
+ifeq ($(CONFIG_FIRMWARE_INCLUDE_LRZSZ),y)
+         CFLAGS += -DAPP_LRZSZ
+endif
+
+ifeq ($(CONFIG_FIRMWARE_INCLUDE_NGROK),y)
+         CFLAGS += -DAPP_NGROK
+endif
+
+ifeq ($(CONFIG_FIRMWARE_INCLUDE_KMS),y)
+         CFLAGS += -DAPP_KMS
+endif

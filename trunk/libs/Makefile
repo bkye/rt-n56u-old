@@ -1,6 +1,6 @@
 .EXPORT_ALL_VARIABLES:
 .PHONY: all romfs clean
-
+THISDIR = $(shell pwd)
 ifndef ROOTDIR
 ROOTDIR=..
 endif
@@ -89,6 +89,11 @@ ifdef CONFIG_MTD_UBI
 LIBS_INCLUDE_LIBLZO=y
 endif
 
+ifeq ($(CONFIG_FIRMWARE_INCLUDE_LRZSZ),y)
+LIBS_INCLUDE_LIBICONV=y
+endif
+
+
 dir_y						+= libz
 dir_$(LIBS_INCLUDE_LIBLZO)			+= liblzo
 dir_$(LIBS_INCLUDE_LIBICONV)			+= libiconv
@@ -145,7 +150,7 @@ romfs:
 		[ -d $$i ] && \
 		$(MAKE) -C $$i romfs ; \
 	done
-
+	
 clean:
 	for i in `ls -d *` ; do \
 		if [ -d $$i ] ; then \
@@ -153,4 +158,3 @@ clean:
 			rm -f $(DESTDIR)/.installed_$$i ; \
 		fi ; \
 	done
-

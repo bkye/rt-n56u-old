@@ -1,5 +1,5 @@
 /*
- * 参数表
+ * Last update 20170607 by bkye
  */
 
 #include <stdio.h>
@@ -235,24 +235,81 @@
 			{"aria_rport", "", NULL, EVM_RESTART_ARIA},
 #endif
 #if defined(APP_ADBYBY)
-			{"ad_enable", "", NULL, EVM_RESTART_ADBYBY},//ad
-			{"ad_change", "", NULL, EVM_RESTART_ADBYBY},//ad
-			{"ad_dir", "", NULL, EVM_RESTART_ADBYBY},//ad
+			{"ad_enable", "", NULL, EVM_RESTART_ADBYBY},
+			{"ad_change", "", NULL, EVM_RESTART_ADBYBY},
+			{"ad_dir", "", NULL, EVM_RESTART_ADBYBY},
 			{"adbyby_dir", "", NULL, EVM_RESTART_ADBYBY},
-			{"adbyby_cpu", "", NULL, EVM_RESTART_ADBYBY},//Koolproxy
-			{"koolproxy_https", "", NULL, EVM_RESTART_ADBYBY},//Koolproxy
+			{"adbyby_whost", "", NULL, EVM_RESTART_ADBYBY},
+			{"adbyby_cpu", "", NULL, EVM_RESTART_ADBYBY},
+			{"koolproxy_https", "", NULL, EVM_RESTART_ADBYBY},
+			{"adbybyt.user.txt", "File", NULL, EVM_RESTART_ADBYBY},
+			{"adbybym.user.txt", "File", NULL, EVM_RESTART_ADBYBY},
+			{"koolpyt.user.txt", "File", NULL, EVM_RESTART_ADBYBY},
+			{"koolpym.user.txt", "File", NULL, EVM_RESTART_ADBYBY},
 #endif
 #if defined(APP_XUNLEI)			
-			{"xunlei_enable", "", NULL, EVM_RESTART_XUNLEI}, //迅雷远程
+			{"xunlei_enable", "", NULL, EVM_RESTART_XUNLEI},
 			{"xunlei_dir", "", NULL, EVM_RESTART_XUNLEI},
 #endif
-			{"kms_enable", "", NULL, EVM_RESTART_KMS},//KMS
-			{"dnsq_enable", "", NULL, EVM_RESTART_DNSQ},//DNS
-			{"dnsq_fq_enable", "", NULL, EVM_RESTART_DNSQ},//DNS
-			{"dnsq_ad_enable", "", NULL, EVM_RESTART_DNSQ},//DNS
+#if defined(APP_KMS)
+			{"kms_enable", "", NULL, EVM_RESTART_KMS},
+#endif
+			{"dnsq_enable", "", NULL, EVM_RESTART_DNSQ},
+			{"dnsq_fq_enable", "", NULL, EVM_RESTART_DNSQ},
+			{"dnsq_fq_file", "", NULL, EVM_RESTART_DNSQ},
+			{"dnsq_ad_enable", "", NULL, EVM_RESTART_DNSQ},
 			{"dnsq_update_enable", "", NULL, EVM_RESTART_DNSQ},
 			{"dnsq_hours", "", NULL, EVM_RESTART_DNSQ},
 			{"dnsq_min", "", NULL, EVM_RESTART_DNSQ},
+			{"dnsq_uhost_enable", "", NULL, EVM_RESTART_DNSQ},
+			{"bkyezjm.userhost", "File", NULL, EVM_RESTART_DNSQ},
+#if defined(APP_NGROK)
+			{"ngrok_enable", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_show0", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_show1", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_show2", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_show3", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_show4", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_ip", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_prot", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_token", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_host", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_enable0", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_type0", "", NULL, EVM_RESTART_NGROK},
+			{"chk_zdy0", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_sname0", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_lip0", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_lpot0", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_spot0", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_enable1", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_type1", "", NULL, EVM_RESTART_NGROK},
+			{"chk_zdy1", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_sname1", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_lip1", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_lpot1", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_spot1", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_enable2", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_type2", "", NULL, EVM_RESTART_NGROK},
+			{"chk_zdy2", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_sname2", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_lip2", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_lpot2", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_spot2", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_enable3", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_type3", "", NULL, EVM_RESTART_NGROK},
+			{"chk_zdy3", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_sname3", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_lip3", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_lpot3", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_spot3", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_enable4", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_type4", "", NULL, EVM_RESTART_NGROK},
+			{"chk_zdy4", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_sname4", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_lip4", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_lpot4", "", NULL, EVM_RESTART_NGROK},
+			{"ngrok_x_spot4", "", NULL, EVM_RESTART_NGROK},
+#endif
 #if (BOARD_NUM_UPHY_USB3 > 0)
 			{"usb3_disable", "", NULL, EVM_RESTART_REBOOT},
 #endif
@@ -936,10 +993,14 @@
 #if defined(APP_XUNLEI)
 		{EVM_RESTART_XUNLEI,		EVT_RESTART_XUNLEI,		RCN_RESTART_XUNLEI,	0},
 #endif
-		/*迅雷和ADBYBY/KMS支持*/
+#if defined(APP_KMS)
 		{EVM_RESTART_KMS,		EVT_RESTART_KMS,		RCN_RESTART_KMS,	0},
+#endif
 		//{EVM_RESTART_KOOLPROXY,		EVT_RESTART_KOOLPROXY,		RCN_RESTART_KOOLPROXY,	0},
 		{EVM_RESTART_DNSQ,		EVT_RESTART_DNSQ,		RCN_RESTART_DNSQ,	0},
+#if defined(APP_NGROK)
+		{EVM_RESTART_NGROK,		EVT_RESTART_NGROK,		RCN_RESTART_NGROK,	0},
+#endif
 #endif
 #if defined(APP_SMBD) || defined(APP_NMBD)
 		{EVM_RESTART_NMBD,		EVT_RESTART_NMBD,		RCN_RESTART_NMBD,	0},

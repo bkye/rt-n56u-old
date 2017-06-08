@@ -205,6 +205,7 @@ func_fill()
 	script_ezbtn="$dir_storage/ez_buttons_script.sh"
 
 	user_hosts="$dir_dnsmasq/hosts"
+	bkye_hosts="$dir_storage/userhost"
 	user_dnsmasq_conf="$dir_dnsmasq/dnsmasq.conf"
 	user_dnsmasq_serv="$dir_dnsmasq/dnsmasq.servers"
 	user_ovpnsvr_conf="$dir_ovpnsvr/server.conf"
@@ -494,6 +495,18 @@ EOF
 
 EOF
 		chmod 644 "$user_hosts"
+	fi
+	
+	# create dnsmasq user hosts
+	if [ ! -f "$bkye_hosts" ] ; then
+		cat > "$bkye_hosts" <<EOF
+# 定义你自己的hosts
+# 请注意不要和其它规则有冲突
+# 例如:
+# 127.0.0.1		bkye.com
+
+EOF
+		chmod 755 "$bkye_hosts"
 	fi
 
 	# create user AP confs

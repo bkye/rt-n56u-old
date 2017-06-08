@@ -1,6 +1,5 @@
 /*
- * 
- *添加通知
+ *Last update 20170607 by bkye
  */
 
 #include <stdio.h>
@@ -1167,16 +1166,22 @@ handle_notifications(void)
 			restart_xunlei();
 		}
 #endif
-/*迅雷远程、ADBYBY/KMS通知*/
+#if defined(APP_KMS)
 		else if (strcmp(entry->d_name, RCN_RESTART_KMS) == 0)
 		{
 			restart_kms();
 		}
+#endif
+#if defined(APP_NGROK)
+		else if (strcmp(entry->d_name, RCN_RESTART_NGROK) == 0)
+		{
+			restart_ngrok();
+		}
+#endif
 		else if (strcmp(entry->d_name, RCN_RESTART_DNSQ) == 0)
 		{
 			restart_dnsq();
 		}
-/*迅雷远程、ADBYBY/KMS通知*/
 #endif
 		else if (strcmp(entry->d_name, RCN_RESTART_HTTPD) == 0)
 		{

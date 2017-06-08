@@ -141,6 +141,9 @@ dir_$(CONFIG_FIRMWARE_INCLUDE_ARIA)		+= aria2
 endif
 dir_$(CONFIG_FIRMWARE_INCLUDE_XUNLEI)		+= xware
 dir_$(CONFIG_FIRMWARE_INCLUDE_ADBYBY)		+= adbyby
+dir_$(CONFIG_FIRMWARE_INCLUDE_LRZSZ)            += lrzsz
+dir_$(CONFIG_FIRMWARE_INCLUDE_NGROK)            += ngrok
+dir_$(CONFIG_FIRMWARE_INCLUDE_KMS)            += kms
 ifdef CONFIG_MTD_UBI
 ifneq ($(STORAGE_ENABLED),y)
 dir_y						+= util-linux

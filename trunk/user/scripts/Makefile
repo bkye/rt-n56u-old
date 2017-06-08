@@ -10,7 +10,6 @@ romfs:
 	$(ROMFSINST) /sbin/mtd_storage.sh
 ifeq ($(STORAGE_ENABLED),y)
 	$(ROMFSINST) /sbin/automount.sh
-	$(ROMFSINST) /usr/bin/kms.sh
 	$(ROMFSINST) /usr/bin/dnsq.sh
 endif
 ifdef CONFIG_BLK_DEV_SD
@@ -23,8 +22,5 @@ endif
 	$(ROMFSINST) /etc_ro/profile
 	$(ROMFSINST) /etc_ro/shells
 	$(ROMFSINST) /etc_ro/mdev.conf
-	$(ROMFSINST) /etc_ro/vlmcsd.kmd
 	mkdir -p $(INSTALLDIR)/usr/share/terminfo
 	tar -xzf ./terminfo.tar.gz -C $(INSTALLDIR)/usr/share
-	tar -xzf ./vlmcsd.tar.gz -C $(INSTALLDIR)/usr/bin
-	chmod 777 $(INSTALLDIR)/usr/bin/vlmcsd

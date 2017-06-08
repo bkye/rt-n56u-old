@@ -1,5 +1,6 @@
 /*
- * 支持USB后启动的服务
+ ******Last update by bkye*********************
+ **********************************************
  */
 
 #include <stdio.h>
@@ -1155,6 +1156,12 @@ void restart_dnsq(void)
 {
 	if (count_stor_mountpoint())
 		eval("/usr/bin/dnsq.sh");
+}
+
+void restart_ngrok(void)
+{
+	if (count_stor_mountpoint())
+		eval("/usr/bin/ngrok.sh");
 }
 /*迅雷、ADBYBY、kms*/
 static void

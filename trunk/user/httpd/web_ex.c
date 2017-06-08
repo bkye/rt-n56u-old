@@ -13,6 +13,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston,
  * MA 02111-1307 USA
+ * Last update 20170607 by bkye
  */
 
 #include <stdio.h>
@@ -707,6 +708,16 @@ ej_dump(int eid, webs_t wp, int argc, char **argv)
 		snprintf(filename, sizeof(filename), "%s/%s", STORAGE_OVPNCLI_DIR, file+8);
 	else if (strncmp(file, "dnsmasq.", 8)==0)
 		snprintf(filename, sizeof(filename), "%s/%s", STORAGE_DNSMASQ_DIR, file+8);
+	else if (strncmp(file, "bkyezjm.", 8)==0)
+		snprintf(filename, sizeof(filename), "%s/%s", STORAGE_DNSMASQBKYE_DIR, file+8);
+	else if (strncmp(file, "adbybyt.", 8)==0)
+		snprintf(filename, sizeof(filename), "%s/%s", STORAGE_ADBYBYT_DIR, file+8);
+	else if (strncmp(file, "adbybym.", 8)==0)
+		snprintf(filename, sizeof(filename), "%s/%s", STORAGE_ADBYBYM_DIR, file+8);
+	else if (strncmp(file, "koolpyt.", 8)==0)
+		snprintf(filename, sizeof(filename), "%s/%s", STORAGE_KOOLPROXYT_DIR, file+8);
+	else if (strncmp(file, "koolpym.", 8)==0)
+		snprintf(filename, sizeof(filename), "%s/%s", STORAGE_KOOLPROXYM_DIR, file+8);
 	else if (strncmp(file, "scripts.", 8)==0)
 		snprintf(filename, sizeof(filename), "%s/%s", STORAGE_SCRIPTS_DIR, file+8);
 	else if (strncmp(file, "crontab.", 8)==0)
@@ -887,6 +898,21 @@ validate_asp_apply(webs_t wp, int sid)
 			
 			if (!strncmp(v->name, "dnsmasq.", 8)) {
 				if (write_textarea_to_file(value, STORAGE_DNSMASQ_DIR, file_name))
+					restart_needed_bits |= event_mask;
+			} else if (!strncmp(v->name, "bkyezjm.", 8)) {
+				if (write_textarea_to_file(value, STORAGE_DNSMASQBKYE_DIR, file_name))
+					restart_needed_bits |= event_mask;
+			} else if (!strncmp(v->name, "adbybyt.", 8)) {
+				if (write_textarea_to_file(value, STORAGE_ADBYBYT_DIR, file_name))
+					restart_needed_bits |= event_mask;
+			} else if (!strncmp(v->name, "adbybym.", 8)) {
+				if (write_textarea_to_file(value, STORAGE_ADBYBYM_DIR, file_name))
+					restart_needed_bits |= event_mask;
+			} else if (!strncmp(v->name, "koolpyt.", 8)) {
+				if (write_textarea_to_file(value, STORAGE_KOOLPROXYT_DIR, file_name))
+					restart_needed_bits |= event_mask;
+			} else if (!strncmp(v->name, "koolpym.", 8)) {
+				if (write_textarea_to_file(value, STORAGE_KOOLPROXYM_DIR, file_name))
 					restart_needed_bits |= event_mask;
 			} else if (!strncmp(v->name, "scripts.", 8)) {
 				if (write_textarea_to_file(value, STORAGE_SCRIPTS_DIR, file_name))
@@ -2030,8 +2056,18 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 #else
 	int found_app_xunlei = 0;
 #endif
-	int found_app_kms=1;   //KMS
-	int found_app_dnsq=1;   //dns
+#if defined(APP_NGROK)
+	int found_app_ngrok=1;
+#else
+	int found_app_ngrok=0;
+#endif
+#if defined(APP_KMS)
+	int found_app_kms=1;
+#else
+	int found_app_kms=0;
+#endif
+	int found_app_dnsq=1;
+
 #if defined(APP_NFSD)
 	int found_app_nfsd = 1;
 #else
@@ -2189,12 +2225,14 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 		"function found_app_dlna() { return %d;}\n"
 		"function found_app_ffly() { return %d;}\n"
 		"function found_app_torr() { return %d;}\n"
+		"function found_app_trmd() { return %d;}\n"
 		"function found_app_aria() { return %d;}\n"
-		"function found_app_xunlei() { return %d;}\n"  //Ô¶³ÌÑ¸À×
-		"function found_app_adbyby() { return %d;}\n"  //adbyby
-		"function found_app_koolproxy() { return %d;}\n"  //kp
-		"function found_app_kms() { return %d;}\n"     //kms
-		"function found_app_dnsq() { return %d;}\n"     //dns
+		"function found_app_xunlei() { return %d;}\n"
+		"function found_app_adbyby() { return %d;}\n"
+		"function found_app_koolproxy() { return %d;}\n"
+		"function found_app_kms() { return %d;}\n"
+		"function found_app_dnsq() { return %d;}\n"
+		"function found_app_ngrok() { return %d;}\n" 
 		"function found_app_nfsd() { return %d;}\n"
 		"function found_app_smbd() { return %d;}\n"
 		"function found_app_nmbd() { return %d;}\n"
@@ -2210,11 +2248,11 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 		found_app_ffly,
 		found_app_trmd,
 		found_app_aria,
-		found_app_xunlei,  //Ô¶³ÌÑ¸À×
-		found_app_adbyby,  //adbyby
-		//found_app_koolproxy, //kp
-		found_app_kms,     //kms
-		found_app_dnsq,     //DNS
+		found_app_xunlei,
+		found_app_adbyby,
+		found_app_ngrok,
+		found_app_kms,
+		found_app_dnsq,
 		found_app_nfsd,
 		found_app_smbd,
 		found_app_nmbd,

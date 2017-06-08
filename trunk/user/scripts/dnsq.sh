@@ -6,10 +6,12 @@ dnsqmin=`nvram get dnsq_min`
 dnsqreset=`nvram get dnsq_update_enable`
 dnsqfq=`nvram get dnsq_fq_enable`
 dnsqad=`nvram get dnsq_ad_enable`
+dnsquhost=`nvram get dnsq_uhost_enable`
 if [ "$dnsqenable" != 1 ]; then
 logger -t "dnsmasq" "正在还原dnsmasq规则..."
 #删除dnsmasq.conf的修改内容
 sed -i -e '/\/dns\//d' /etc/storage/dnsmasq/dnsmasq.conf
+sed -i -e '/userhost/d' /etc/storage/dnsmasq/dnsmasq.conf
 #删除定时脚本的修改内容
 http_username=`nvram get http_username`
 sed -i '/dnsq/d' /etc/storage/cron/crontabs/$http_username
@@ -40,6 +42,19 @@ conf-file=/etc/storage/dnsmasq/dns/conf/dnsad
 conf-file=/etc/storage/dnsmasq/dns/conf/dnsfq
 EOF
 
+if [ ! -f "/etc/storage/userhost" ]; then
+logger -t "dnsmasq" "自定义host文件不存在。"
+sed -i '/userhost/d' /etc/storage/dnsmasq/dnsmasq.conf
+else
+/sbin/mtd_storage.sh save
+fi
+if [ "$dnsquhost" = "1" ]; then
+logger -t "dnsmasq" "找到自定义hosts文件。"
+sed -i '/userhost/d' /etc/storage/dnsmasq/dnsmasq.conf
+cat >> /etc/storage/dnsmasq/dnsmasq.conf << EOF
+addn-hosts=/etc/storage/userhost
+EOF
+fi
 ##到“定时脚本”里写入定时执行任务
 #零点一分执行脚本
 #1 0 * * * /bin/sh /etc/storage/dnsmasq/dns/start.sh
@@ -73,6 +88,7 @@ logger -t "dnsmasq" "host文件下载完成。"
 fi
 cd /etc/storage/dnsmasq/dns/conf
 wget --no-check-certificate https://raw.githubusercontent.com/sy618/hosts/master/dnsmasq/dnsad -O dnsad;sed -i "1 i\## update：$(date "+%Y-%m-%d %H:%M:%S")" dnsad
+
 if [ ! -f "dnsad" ]; then
 logger -t "dnsmasq" "屏蔽广告家族文件下载失败，可能是地址失效或者网络异常！"
 sed -i '/dnsad/d' /etc/storage/dnsmasq/dnsmasq.conf
@@ -86,7 +102,10 @@ fi
 if [ "$dnsqfq" -eq 1 ]; then
 #下载dnsmasq规则
 cd /etc/storage/dnsmasq/dns/conf
-wget --no-check-certificate https://raw.githubusercontent.com/sy618/hosts/master/dnsmasq/dnsfq -O dnsfq;sed -i "1 i\## update：$(date "+%Y-%m-%d %H:%M:%S")" dnsfq
+dnsqfqfile=`nvram get dnsq_fq_file`
+wget --no-check-certificate $dnsqfqfile -O dnsfq
+sleep 2
+#sed -i "1 i\## update：$(date "+%Y-%m-%d %H:%M:%S")" dnsfq
 if [ ! -f "dnsfq" ]; then
 logger -t "dnsmasq" "GFW翻墙文件下载失败，可能是地址失效或者网络异常！"
 sed -i '/dnsfq/d' /etc/storage/dnsmasq/dnsmasq.conf

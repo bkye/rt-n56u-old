@@ -38,9 +38,15 @@ sed -i '/adbyby/d' /etc/storage/post_wan_script.sh
 logger -t "adbyby" "adbyby进程已成功关闭。"
 fi
 if [ "$adchange" -eq 2 ]; then
-killall koolproxy
-[ "$koolproxyhttps" = "1" ] && logger -t "koolproxy" "关闭代理端口" && iptables -t nat -D PREROUTING -p tcp -m multiport --dport 80,443,8080 -j REDIRECT --to-ports 3000
+portkp=$(iptables -t nat -L | grep 'ports 3000' | wc -l)
+    logger -t "koolproxy" "找到$portkp个3000透明代理端口，正在关闭。"
+    while [[ "$portkp" -ge 1 ]]
+    do
+	[ "$koolproxyhttps" = "1" ] && logger -t "koolproxy" "关闭代理端口" && iptables -t nat -D PREROUTING -p tcp -m multiport --dport 80,443,8080 -j REDIRECT --to-ports 3000
 [ "$koolproxyhttps" != "1" ] && logger -t "koolproxy" "关闭代理端口" && iptables -t nat -D PREROUTING -p tcp -m multiport --dport 80,8080 -j REDIRECT --to-ports 3000
+portkp=$(iptables -t nat -L | grep 'ports 3000' | wc -l)
+done
+killall koolproxy
 sed -i '/koolproxy/d' /etc/storage/post_wan_script.sh
 logger -t "koolproxy" "koolproxy进程已成功关闭。"
 fi
@@ -65,6 +71,7 @@ if [ -s "$adbybydir/adbb/bin/adbyby" ] ;then
 		chmod 777 "$adbybydir/adbb/bin/adhook.ini"
 		sed -Ei '/whitehost=/d' $adbybydir/adbb/bin/adhook.ini
 		echo whitehost=$adbyby_whost >> $adbybydir/adbb/bin/adhook.ini
+		echo @@\|http://\$domain=$(echo $adbyby_whost | tr , \|) >> $adbybydir/adbb/bin/data/user.txt
 		else
 		logger -t "adbyby" "过滤白名单地址未定义,已忽略。"
 	fi

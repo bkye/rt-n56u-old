@@ -35,7 +35,7 @@ if [ ! -x "$xunleidir/xunlei/portal" ]; then
 fi
 
 codeline=""
-export LD_LIBRARY_PATH="$xunleidir/xunlei/lib:/lib:/opt/lib"
+export LD_LIBRARY_PATH="$xunleidir/xunlei/lib:/lib:/opt/lib:/usr/share/bkye"
 while [ -z "$codeline" ]
 do
 	logger -t "远程迅雷下载" "启动中..."

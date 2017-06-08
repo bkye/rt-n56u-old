@@ -29,17 +29,90 @@ $j(document).ready(function() {
 	init_itoggle('koolproxy_https');
 if($j("#ad_change_adbyby").is(":checked")==true){
 $j("#row_adbyby_whost").show();
-  }
+if($j("#ad_dir_2").is(":checked")==true){
+$j("#row_adbybym_u").show();
+}else{
+$j("#row_adbybyt_u").show();
+}
+}
 if($j("#ad_change_koolproxy").is(":checked")==true){
+if($j("#ad_dir_2").is(":checked")==true){
+$j("#row_koolproxym_u").show();
+}else{
+$j("#row_koolproxyt_u").show();
+}
  $j("#row_koolproxy_https").show();
   }
 	$j("#ad_change_adbyby").click(function(){
     $j("#row_adbyby_whost").show();
     $j("#row_koolproxy_https").hide();
+	if($j("#ad_dir_2").is(":checked")==true){
+	$j("#row_adbybym_u").show();
+	$j("#row_adbybyt_u").hide();
+	$j("#row_koolproxym_u").hide();
+	$j("#row_koolproxyt_u").hide();
+	}else{
+	$j("#row_adbybym_u").hide();
+	$j("#row_adbybyt_u").show();
+	$j("#row_koolproxym_u").hide();
+	$j("#row_koolproxyt_u").hide();
+	}
   });
   $j("#ad_change_koolproxy").click(function(){
   $j("#row_koolproxy_https").show();
   $j("#row_adbyby_whost").hide();
+  if($j("#ad_dir_2").is(":checked")==true){
+	$j("#row_adbybym_u").hide();
+	$j("#row_adbybyt_u").hide();
+	$j("#row_koolproxym_u").show();
+	$j("#row_koolproxyt_u").hide();
+	}else{
+	$j("#row_adbybym_u").hide();
+	$j("#row_adbybyt_u").hide();
+	$j("#row_koolproxym_u").hide();
+	$j("#row_koolproxyt_u").show();
+	}
+  });
+   $j("#ad_dir_1").click(function(){
+  if($j("#ad_dir_2").is(":checked")==true){
+	$j("#row_adbybym_u").hide();
+	$j("#row_adbybyt_u").hide();
+	$j("#row_koolproxym_u").show();
+	$j("#row_koolproxyt_u").hide();
+	}else{
+	$j("#row_adbybym_u").hide();
+	$j("#row_adbybyt_u").hide();
+	$j("#row_koolproxym_u").hide();
+	$j("#row_koolproxyt_u").show();
+	}
+  });
+  $j("#ad_dir_1").click(function(){
+if($j("#ad_change_adbyby").is(":checked")==true){
+	$j("#row_adbybym_u").hide();
+	$j("#row_adbybyt_u").show();
+	$j("#row_koolproxym_u").hide();
+	$j("#row_koolproxyt_u").hide();
+}
+if($j("#ad_change_koolproxy").is(":checked")==true){
+	$j("#row_adbybym_u").hide();
+	$j("#row_adbybyt_u").hide();
+	$j("#row_koolproxym_u").hide();
+	$j("#row_koolproxyt_u").show();
+  }
+  });
+    $j("#ad_dir_2").click(function(){
+if($j("#ad_change_adbyby").is(":checked")==true){
+	$j("#row_adbybym_u").show();
+	$j("#row_adbybyt_u").hide();
+	$j("#row_koolproxym_u").hide();
+	$j("#row_koolproxyt_u").hide();
+}
+if($j("#ad_change_koolproxy").is(":checked")==true){
+	$j("#row_adbybym_u").hide();
+	$j("#row_adbybyt_u").hide();
+	$j("#row_koolproxym_u").show();
+	$j("#row_koolproxyt_u").hide();
+  }
   });
  
 });
@@ -61,6 +134,15 @@ function initial(){
 
 }
 
+
+
+function textarea_scripts_enabled(v){
+	inputCtrl(document.form['adbybyt.user.txt'], v);
+	inputCtrl(document.form['koolpyt.user.txt'], v);
+	inputCtrl(document.form['adbybym.user.txt'], v);
+	inputCtrl(document.form['koolpym.user.txt'], v);
+}
+
 function change_ad_enable(){
 	var v = document.form.ad_enable[0].checked; 
 	showhide_div('row_ad_change', v);
@@ -69,14 +151,28 @@ function change_ad_enable(){
 	if (v==false){
 	showhide_div('row_adbyby_whost', v);
 	showhide_div('row_koolproxy_https', v);
+	showhide_div('row_adbybyt_u', v);
+	showhide_div('row_adbybym_u', v);
+	showhide_div('row_koolproxyt_u', v);
+	showhide_div('row_koolproxym_u', v);
 	}
 	if (v==true){
 	var ad = document.form.ad_change[0].checked;
 	if (ad==true){
 	showhide_div('row_adbyby_whost', v);
+	if($j("#ad_dir_2").is(":checked")==true){
+showhide_div('row_adbybym_u', v);
+}else{
+showhide_div('row_adbybyt_u', v);
+}
 	}
 	if (ad==false){
 	showhide_div('row_koolproxy_https', v);
+	if($j("#ad_dir_2").is(":checked")==true){
+showhide_div('row_koolproxym_u', v);
+}else{
+showhide_div('row_koolproxyt_u', v);
+}
 	}
 	}
 	
@@ -127,7 +223,7 @@ function applyRule(){
     <input type="hidden" name="current_page" value="Advanced_adbyby.asp">
     <input type="hidden" name="next_page" value="">
     <input type="hidden" name="next_host" value="">
-    <input type="hidden" name="sid_list" value="Storage;">
+    <input type="hidden" name="sid_list" value="Storage;General;">
     <input type="hidden" name="group_id" value="">
     <input type="hidden" name="action_mode" value="">
     <input type="hidden" name="action_script" value="">
@@ -245,6 +341,38 @@ function applyRule(){
                                             </th>
                                             <td>
                                                 <input type="text" name="adbyby_whost" class="input" maxlength="32" size="32" value="<% nvram_get_x("", "adbyby_whost"); %>"/>
+                                            </td>
+                                        </tr>
+										<tr id="row_adbybyt_u" style="display:none;" >
+                                            <td colspan="2">
+                                                <a href="javascript:spoiler_toggle('script0')"><span><#adbybytu#></span></a>
+                                                <div id="script0" style="display:none;">
+                                                    <textarea rows="24" wrap="off" spellcheck="false" maxlength="8192" class="span12" name="adbybyt.user.txt" style="font-family:'Courier New'; font-size:12px; width=100%"><% nvram_dump("adbybyt.user.txt",""); %></textarea>
+                                                </div>
+                                            </td>
+                                        </tr>
+										<tr id="row_adbybym_u" style="display:none;" >
+                                            <td colspan="2">
+                                                <a href="javascript:spoiler_toggle('script1')"><span><#adbybymu#></span></a>
+                                                <div id="script1" style="display:none;">
+                                                    <textarea rows="24" wrap="off" spellcheck="false" maxlength="8192" class="span12" name="adbybym.user.txt" style="font-family:'Courier New'; font-size:12px; width=100%"><% nvram_dump("adbybym.user.txt",""); %></textarea>
+                                                </div>
+                                            </td>
+                                        </tr>
+										<tr id="row_koolproxyt_u" style="display:none;" >
+                                            <td colspan="2">
+                                                <a href="javascript:spoiler_toggle('script2')"><span><#koolproxytu#></span></a>
+                                                <div id="script2" style="display:none;">
+                                                    <textarea rows="24" wrap="off" spellcheck="false" maxlength="8192" class="span12" name="koolpyt.user.txt" style="font-family:'Courier New'; font-size:12px; width=100%"><% nvram_dump("koolpyt.user.txt",""); %></textarea>
+                                                </div>
+                                            </td>
+                                        </tr>
+										<tr id="row_koolproxym_u" style="display:none;" >
+                                            <td colspan="2">
+                                                <a href="javascript:spoiler_toggle('script3')"><span><#koolproxymu#></span></a>
+                                                <div id="script3" style="display:none;">
+                                                    <textarea rows="24" wrap="off" spellcheck="false" maxlength="8192" class="span12" name="koolpym.user.txt" style="font-family:'Courier New'; font-size:12px; width=100%"><% nvram_dump("koolpym.user.txt",""); %></textarea>
+                                                </div>
                                             </td>
                                         </tr>
                                     </table>

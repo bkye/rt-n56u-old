@@ -3,7 +3,7 @@
 #######################################################################
 # (1) run process from superuser root (less security)
 # (0) run process from unprivileged user "nobody" (more security)
-SVC_ROOT=0
+SVC_ROOT=1
 
 # process priority (0-normal, 19-lowest)
 SVC_PRIORITY=5
@@ -11,8 +11,18 @@ SVC_PRIORITY=5
 
 SVC_NAME="Transmission"
 SVC_PATH="/usr/bin/transmission-daemon"
-DIR_LINK="/mnt/transmission"
-
+Patch_LINK=`ls -l /media/ | awk '/^d/ {print $NF}' | sed -n '1p'`
+if [ -z $Patch_LINK ]; then
+logger -t "$SVC_NAME" "未检测到挂载硬盘,暂停启动$SVC_NAME"
+nvram set aria_enable="0"
+ exit 0
+fi
+if [ -d "/media/$Patch_LINK/transmission/" ]; then
+DIR_LINK="/media/$Patch_LINK/transmission"
+else
+mkdir -p "/media/$Patch_LINK/transmission/"
+DIR_LINK="/media/$Patch_LINK/transmission"
+fi
 func_start()
 {
 	# Make sure already running
@@ -67,7 +77,7 @@ func_start()
 	
 	if [ $? -eq 0 ] ; then
 		echo "[  OK  ]"
-		logger -t "$SVC_NAME" "daemon is started"
+		logger -t "$SVC_NAME" "启动成功。"
 	else
 		echo "[FAILED]"
 	fi

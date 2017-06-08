@@ -207,23 +207,23 @@ am__relativize = \
     dir1=`echo "$$dir1" | sed -e "$$sed_rest"`; \
   done; \
   reldir="$$dir2"
-ACLOCAL = ${SHELL} "/opt/newifi/trunk/libs/libcurl/curl-7.37.x/missing" --run aclocal-1.14
+ACLOCAL = ${SHELL} "/opt/rt-n56u/trunk/libs/libcurl/curl-7.37.x/missing" --run aclocal-1.14
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
-AR = /opt/newifi/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-ar
-AS = /opt/newifi/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-as -mips32r2 -march=mips32r2
-AUTOCONF = ${SHELL} "/opt/newifi/trunk/libs/libcurl/curl-7.37.x/missing" --run autoconf
-AUTOHEADER = ${SHELL} "/opt/newifi/trunk/libs/libcurl/curl-7.37.x/missing" --run autoheader
-AUTOMAKE = ${SHELL} "/opt/newifi/trunk/libs/libcurl/curl-7.37.x/missing" --run automake-1.14
+AR = /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-ar
+AS = /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-as -mips32r2 -march=mips32r2
+AUTOCONF = ${SHELL} "/opt/rt-n56u/trunk/libs/libcurl/curl-7.37.x/missing" --run autoconf
+AUTOHEADER = ${SHELL} "/opt/rt-n56u/trunk/libs/libcurl/curl-7.37.x/missing" --run autoheader
+AUTOMAKE = ${SHELL} "/opt/rt-n56u/trunk/libs/libcurl/curl-7.37.x/missing" --run automake-1.14
 AWK = gawk
 BLANK_AT_MAKETIME = 
-CC = /opt/newifi/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-gcc -mips32r2 -march=mips32r2
+CC = /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-gcc -mips32r2 -march=mips32r2
 CCDEPMODE = depmode=gcc3
-CFLAGS = -Os -fomit-frame-pointer -pipe -DEMBED -isystem /opt/newifi/trunk/stage/include -Dlinux -D__linux__ -Dunix -Wall -Wno-trigraphs -Wno-strict-aliasing -Wno-format-security -Wno-pointer-sign -ffunction-sections -fdata-sections -Wno-system-headers
+CFLAGS = -Os -fomit-frame-pointer -pipe -DEMBED -isystem /opt/rt-n56u/trunk/stage/include -Dlinux -D__linux__ -Dunix -Wall -Wno-trigraphs -Wno-strict-aliasing -Wno-format-security -Wno-unused-but-set-variable -fno-tree-slsr -Wno-pointer-sign -ffunction-sections -fdata-sections -Wno-system-headers
 CFLAG_CURL_SYMBOL_HIDING = -fvisibility=hidden
-CONFIGURE_OPTIONS = " '--prefix=/opt/newifi/trunk/stage' '--enable-static' '--disable-shared' '--enable-ipv6' '--disable-gopher' '--disable-ldap' '--disable-ldaps' '--disable-rtsp' '--disable-telnet' '--disable-tftp' '--disable-smtp' '--disable-pop3' '--disable-imap' '--disable-sspi' '--disable-dict' '--disable-ares' '--disable-debug' '--disable-curldebug' '--disable-manual' '--disable-verbose' '--disable-tls-srp' '--disable-libcurl-option' '--disable-threaded-resolver' '--without-gnutls' '--without-ca-bundle' '--without-libidn' '--without-libssh2' '--without-krb4' '--without-nss' '--with-random=/dev/urandom' '--with-zlib=/opt/newifi/trunk/stage' '--with-ssl=/opt/newifi/trunk/stage' '--host=mipsel-linux' '--build=x86_64-pc-linux-gnu' 'build_alias=x86_64-pc-linux-gnu' 'host_alias=mipsel-linux' 'CC=/opt/newifi/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-gcc -mips32r2 -march=mips32r2' 'CFLAGS=-Os -fomit-frame-pointer -pipe  -DEMBED -I/opt/newifi/trunk/stage/include -Dlinux -D__linux__ -Dunix -Wall -Wno-trigraphs -Wno-strict-aliasing -Wno-format-security   -Wno-pointer-sign -ffunction-sections -fdata-sections' 'LDFLAGS=-L/opt/newifi/trunk/stage/lib -Wl,--gc-sections'"
-CPP = /opt/newifi/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-gcc -mips32r2 -march=mips32r2 -E
-CPPFLAGS = -I/opt/newifi/trunk/stage/include -I//include
+CONFIGURE_OPTIONS = " '--prefix=/opt/rt-n56u/trunk/stage' '--enable-static' '--disable-shared' '--enable-ipv6' '--disable-gopher' '--disable-ldap' '--disable-ldaps' '--disable-rtsp' '--disable-telnet' '--disable-tftp' '--disable-smtp' '--disable-pop3' '--disable-imap' '--disable-sspi' '--disable-dict' '--disable-ares' '--disable-debug' '--disable-curldebug' '--disable-manual' '--disable-verbose' '--disable-tls-srp' '--disable-libcurl-option' '--disable-threaded-resolver' '--without-gnutls' '--without-ca-bundle' '--without-libidn' '--without-libssh2' '--without-krb4' '--without-nss' '--with-random=/dev/urandom' '--with-zlib=/opt/rt-n56u/trunk/stage' '--with-ssl=/opt/rt-n56u/trunk/stage' '--host=mipsel-linux' '--build=x86_64-pc-linux-gnu' 'build_alias=x86_64-pc-linux-gnu' 'host_alias=mipsel-linux' 'CC=/opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-gcc -mips32r2 -march=mips32r2' 'CFLAGS=-Os -fomit-frame-pointer -pipe  -DEMBED -I/opt/rt-n56u/trunk/stage/include -Dlinux -D__linux__ -Dunix -Wall -Wno-trigraphs -Wno-strict-aliasing -Wno-format-security -Wno-unused-but-set-variable -fno-tree-slsr -Wno-pointer-sign -ffunction-sections -fdata-sections' 'LDFLAGS=-L/opt/rt-n56u/trunk/stage/lib -Wl,--gc-sections'"
+CPP = /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-gcc -mips32r2 -march=mips32r2 -E
+CPPFLAGS = -I/opt/rt-n56u/trunk/stage/include -I//include
 CPPFLAG_CURL_STATICLIB = -DCURL_STATICLIB
 CURLVERSION = 7.37.1
 CURL_CA_BUNDLE = 
@@ -271,8 +271,8 @@ INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 IPV6_ENABLED = 1
-LD = /opt/newifi/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-ld
-LDFLAGS = -L/opt/newifi/trunk/stage/lib -Wl,--gc-sections -L/opt/newifi/trunk/stage/lib -L//lib
+LD = /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-ld
+LDFLAGS = -L/opt/rt-n56u/trunk/stage/lib -Wl,--gc-sections -L/opt/rt-n56u/trunk/stage/lib -L//lib
 LIBCURL_LIBS = -lssl -lcrypto -lssl -lcrypto -lz
 LIBMETALINK_CPPFLAGS = 
 LIBMETALINK_LDFLAGS = 
@@ -284,11 +284,11 @@ LIPO =
 LN_S = ln -s
 LTLIBOBJS = 
 MAINT = #
-MAKEINFO = ${SHELL} "/opt/newifi/trunk/libs/libcurl/curl-7.37.x/missing" --run makeinfo
+MAKEINFO = ${SHELL} "/opt/rt-n56u/trunk/libs/libcurl/curl-7.37.x/missing" --run makeinfo
 MANIFEST_TOOL = :
 MANOPT = -man
 MKDIR_P = /bin/mkdir -p
-NM = /opt/newifi/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-nm
+NM = /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-nm
 NMEDIT = 
 NROFF = /usr/bin/nroff
 OBJDUMP = objdump
@@ -309,13 +309,13 @@ PKGADD_PKG = HAXXcurl
 PKGADD_VENDOR = curl.haxx.se
 PKGCONFIG = no
 RANDOM_FILE = /dev/urandom
-RANLIB = /opt/newifi/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-ranlib
+RANLIB = /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-ranlib
 REQUIRE_LIB_DEPS = yes
 SED = /bin/sed
 SET_MAKE = 
 SHELL = /bin/bash
 SSL_ENABLED = 1
-STRIP = /opt/newifi/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-strip
+STRIP = /opt/rt-n56u/toolchain-mipsel/toolchain-3.4.x/bin/mipsel-linux-uclibc-strip
 SUPPORT_FEATURES = SSL IPv6 libz NTLM NTLM_WB
 SUPPORT_PROTOCOLS = FILE FTP FTPS HTTP HTTPS
 USE_ARES = 
@@ -336,10 +336,10 @@ USE_WINDOWS_SSPI =
 VERSION = -
 VERSIONNUM = 072501
 ZLIB_LIBS = -lz
-abs_builddir = /opt/newifi/trunk/libs/libcurl/curl-7.37.x/tests
-abs_srcdir = /opt/newifi/trunk/libs/libcurl/curl-7.37.x/tests
-abs_top_builddir = /opt/newifi/trunk/libs/libcurl/curl-7.37.x
-abs_top_srcdir = /opt/newifi/trunk/libs/libcurl/curl-7.37.x
+abs_builddir = /opt/rt-n56u/trunk/libs/libcurl/curl-7.37.x/tests
+abs_srcdir = /opt/rt-n56u/trunk/libs/libcurl/curl-7.37.x/tests
+abs_top_builddir = /opt/rt-n56u/trunk/libs/libcurl/curl-7.37.x
+abs_top_srcdir = /opt/rt-n56u/trunk/libs/libcurl/curl-7.37.x
 ac_ct_AR = 
 ac_ct_CC = 
 ac_ct_DUMPBIN = 
@@ -368,7 +368,7 @@ host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /opt/newifi/trunk/libs/libcurl/curl-7.37.x/install-sh
+install_sh = ${SHELL} /opt/rt-n56u/trunk/libs/libcurl/curl-7.37.x/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 libext = a
@@ -378,7 +378,7 @@ mandir = ${datarootdir}/man
 mkdir_p = $(MKDIR_P)
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /opt/newifi/trunk/stage
+prefix = /opt/rt-n56u/trunk/stage
 program_transform_name = s,x,x,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
