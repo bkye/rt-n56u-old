@@ -1,5 +1,5 @@
 #!/bin/sh
-#last update 20170531 by bkye 
+#last update 20170614 by bkye 
 dnsqenable=`nvram get dnsq_enable`
 dnsqhour=`nvram get dnsq_hours`
 dnsqmin=`nvram get dnsq_min`
@@ -55,21 +55,6 @@ cat >> /etc/storage/dnsmasq/dnsmasq.conf << EOF
 addn-hosts=/etc/storage/userhost
 EOF
 fi
-##到“定时脚本”里写入定时执行任务
-#零点一分执行脚本
-#1 0 * * * /bin/sh /etc/storage/dnsmasq/dns/start.sh
-#http_username=`nvram get http_username`
-#sed -i '/\/dns\//d' /etc/storage/cron/crontabs/$http_username
-#cat >> /etc/storage/cron/crontabs/$http_username << EOF
-#1 0 * * * /bin/sh /etc/storage/dnsmasq/dns/start.sh
-#EOF
-
-##到自定义脚本里“在 WAN 上行/下行启动后执行”写入脚本，网络重连自动更新dnsmasq
-#sed -i '/\/dns\//d' /etc/storage/post_wan_script.sh
-#cat >> /etc/storage/post_wan_script.sh << EOF
-#/bin/sh /etc/storage/dnsmasq/dns/start.sh
-#EOF
-
 #############################
 ##▼开始下载文件并重启dnsmasq生效
 rm -rf /etc/storage/dnsmasq/dns;cd /etc
@@ -81,16 +66,16 @@ logger -t "dnsmasq" "开始下载相关hosts和规则！"
 cd /etc/storage/dnsmasq/dns
 wget --no-check-certificate https://raw.githubusercontent.com/vokins/yhosts/master/hosts -O hosts;sed -i "1 i\## update：$(date "+%Y-%m-%d %H:%M:%S")" hosts
 if [ ! -f "hosts" ]; then
-logger -t "dnsmasq" "host文件下载失败，可能是地址失效或者网络异常！"
+logger -t "dnsmasq" "host文件下载失败，可能是地址失效或者网络异常！已忽略加载！"
 sed -i '/hosts/d' /etc/storage/dnsmasq/dnsmasq.conf
 else
 logger -t "dnsmasq" "host文件下载完成。"
 fi
 cd /etc/storage/dnsmasq/dns/conf
-wget --no-check-certificate https://raw.githubusercontent.com/sy618/hosts/master/dnsmasq/dnsad -O dnsad;sed -i "1 i\## update：$(date "+%Y-%m-%d %H:%M:%S")" dnsad
+wget --no-check-certificate https://raw.githubusercontent.com/vokins/yhosts/master/dnsmasq/union.conf -O dnsad;sed -i "1 i\## update：$(date "+%Y-%m-%d %H:%M:%S")" dnsad
 
 if [ ! -f "dnsad" ]; then
-logger -t "dnsmasq" "屏蔽广告家族文件下载失败，可能是地址失效或者网络异常！"
+logger -t "dnsmasq" "屏蔽广告家族文件下载失败，可能是地址失效或者网络异常！已忽略加载！"
 sed -i '/dnsad/d' /etc/storage/dnsmasq/dnsmasq.conf
 else
 logger -t "dnsmasq" "屏蔽广告家族文件下载完成。"
@@ -107,7 +92,7 @@ wget --no-check-certificate $dnsqfqfile -O dnsfq
 sleep 2
 #sed -i "1 i\## update：$(date "+%Y-%m-%d %H:%M:%S")" dnsfq
 if [ ! -f "dnsfq" ]; then
-logger -t "dnsmasq" "GFW翻墙文件下载失败，可能是地址失效或者网络异常！"
+logger -t "dnsmasq" "GFW翻墙文件下载失败，可能是地址失效或者网络异常！已忽略加载！"
 sed -i '/dnsfq/d' /etc/storage/dnsmasq/dnsmasq.conf
 else
 logger -t "dnsmasq" "GFW翻墙文件下载完成。"
@@ -116,9 +101,9 @@ else
 sed -i '/dnsfq/d' /etc/storage/dnsmasq/dnsmasq.conf
 fi
 cd /etc/storage/dnsmasq/dns/conf
-wget --no-check-certificate https://raw.githubusercontent.com/sy618/hosts/master/dnsmasq/dnsip -O dnsip;sed -i "1 i\## update：$(date "+%Y-%m-%d %H:%M:%S")" dnsip
+wget --no-check-certificate https://raw.githubusercontent.com/vokins/yhosts/master/dnsmasq/ip.conf -O dnsip;sed -i "1 i\## update：$(date "+%Y-%m-%d %H:%M:%S")" dnsip
 if [ ! -f "dnsip" ]; then
-logger -t "dnsmasq" "屏蔽运营商劫持文件下载失败，可能是地址失效或者网络异常！"
+logger -t "dnsmasq" "屏蔽运营商劫持文件下载失败，可能是地址失效或者网络异常！已忽略加载！"
 sed -i '/dnsip/d' /etc/storage/dnsmasq/dnsmasq.conf
 else
 logger -t "dnsmasq" "屏蔽运营商劫持文件下载完成。"
@@ -137,7 +122,7 @@ cat >> /etc/storage/post_wan_script.sh << EOF
 /usr/bin/dnsq.sh&
 EOF
 fi
-
+#定时任务
 if [ "$dnsqreset" = 1 ]; then
 http_username=`nvram get http_username`
 sed -i '/dnsq/d' /etc/storage/cron/crontabs/$http_username
